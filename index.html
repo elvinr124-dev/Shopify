@@ -6,7 +6,7 @@
   <title>The Cloud Sherpa Hoodie | $37.99 + Free Shipping Today | Trending Arrivals</title>
   <meta name="description" content="The Cloud Sherpa Hoodie: an oversized, heavyweight sherpa-lined wearable blanket. Non-electronic warmth with no batteries, no cords and nothing to break. $37.99, free shipping today, ships within 24 hours, 30-day zero-risk returns.">
   <link rel="canonical" href="https://www.trendingarrivals.com/">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="color-scheme" content="dark">
 
   <!-- Open Graph / Twitter (replace the domain with your live URL before launch) -->
@@ -48,12 +48,13 @@
       --color-ink: #000000;
       --color-charcoal: #1A1A1A;
       --color-gray-950: #0A0A0A;
+      --color-gray-50: #FAFAFA;
       --color-gray-900: #111111;
       --color-gray-800: #2A2A2A;
       --color-gray-700: #3A3A3A;
-      --color-gray-600: #525252; /* muted text on white only */
-      --color-gray-500: #737373; /* large text / UI borders only on black */
-      --color-gray-400: #A3A3A3; /* minimum for body-size muted text on black */
+      --color-gray-600: #525252; /* muted body text on white */
+      --color-gray-500: #737373; /* large text / UI borders */
+      --color-gray-400: #A3A3A3; /* muted text on black only */
       --color-gray-300: #D4D4D4;
       --color-gray-200: #E5E5E5;
       --color-gray-100: #F5F5F5;
@@ -125,16 +126,16 @@
   <script src="script.js" defer></script>
 </head>
 
-<body class="bg-black font-sans text-white antialiased">
+<body class="bg-white font-sans text-black antialiased">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- =================================================================================== HEADER -->
   <header id="site-header" class="site-header sticky top-0 z-40" data-scrolled="false">
-    <div class="border-b border-gray-800 bg-charcoal">
+    <div class="border-b border-gray-200 bg-gray-100">
       <div class="mx-auto flex min-h-9 max-w-[90rem] items-center justify-center px-4 py-1.5 sm:px-6 lg:justify-between lg:px-10">
-        <span class="type-label hidden text-gray-300 lg:block">Ships within 24 hours</span>
-        <p class="text-center text-[0.8125rem] font-semibold leading-snug tracking-[0.01em] text-white">🔥 Holiday Demand Peak - Free Shipping Today</p>
-        <span class="type-label hidden text-gray-300 lg:block">30-day zero-risk returns</span>
+        <span class="type-label hidden text-gray-700 lg:block">Ships within 24 hours</span>
+        <p class="text-center text-[0.8125rem] font-semibold leading-snug tracking-[0.01em] text-black">🔥 Holiday Demand Peak - Free Shipping Today</p>
+        <span class="type-label hidden text-gray-700 lg:block">30-day zero-risk returns</span>
       </div>
     </div>
 
@@ -147,11 +148,11 @@
         </a>
 
         <div class="flex items-center gap-1 sm:gap-2">
-          <a href="#buy" class="nav-shop group inline-flex h-11 shrink-0 items-center gap-2 border border-gray-500 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.08em] transition-colors hover:border-white hover:bg-white hover:text-black">
+          <a href="#buy" class="nav-shop group inline-flex h-11 shrink-0 items-center gap-2 border border-gray-500 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.08em] transition-colors hover:border-black hover:bg-black hover:text-white">
             Shop Now
             <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <button type="button" class="cart-btn relative grid size-11 shrink-0 place-items-center transition-colors hover:bg-charcoal" data-cart-open aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Open cart, 0 items">
+          <button type="button" class="cart-btn relative grid size-11 shrink-0 place-items-center transition-colors hover:bg-gray-100" data-cart-open aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Open cart, 0 items">
             <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12.5H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
             <span class="cart-badge" data-cart-count aria-hidden="true" hidden>0</span>
           </button>
@@ -162,34 +163,34 @@
 
   <main id="main" tabindex="-1">
     <!-- ================================================================================= 01 HERO -->
-    <section id="top" class="hero relative border-b border-gray-800" aria-labelledby="hero-title">
+    <section id="top" class="hero relative border-b border-gray-200" aria-labelledby="hero-title">
       <div class="hero-grid mx-auto grid max-w-[90rem] md:grid-cols-12">
-        <!-- Product shot: whole garment on phones (contain on black), framed 4:5 panel from tablet up -->
-        <div class="relative md:order-2 md:col-span-6 md:border-l md:border-gray-800 md:p-6 lg:col-span-5 lg:p-10">
+        <!-- Product shot: whole garment on phones, framed 4:5 panel from tablet up -->
+        <div class="relative md:order-2 md:col-span-6 md:border-l md:border-gray-200 md:p-6 lg:col-span-5 lg:p-10">
           <figure class="relative md:flex md:h-full md:flex-col md:justify-center">
-            <div class="hero-media relative overflow-hidden bg-black md:aspect-4/5">
+            <div class="hero-media relative overflow-hidden bg-gray-100 md:aspect-4/5">
               <img src="assets/images/hero.svg" width="1080" height="1350" fetchpriority="high" loading="eager"
-                   alt="The Cloud Sherpa Hoodie in Onyx: an oversized black sherpa-lined hoodie, rim-lit in a dark studio"
+                   alt="The Cloud Sherpa Hoodie in Onyx: an oversized black sherpa-lined hoodie on a light studio backdrop"
                    class="size-full object-contain md:object-cover">
-              <span class="type-label absolute left-4 top-4 text-white md:left-5 md:top-5">Fig. 01 / Onyx</span>
-              <span class="hero-price absolute right-4 top-3 bg-white px-2.5 py-1.5 font-display text-base font-extrabold leading-none text-black [font-stretch:118%] md:right-5 md:top-5 md:px-3 md:py-2 md:text-lg" data-price>$37.99</span>
+              <span class="type-label absolute left-4 top-4 text-black md:left-5 md:top-5">Fig. 01 / Onyx</span>
+              <span class="hero-price absolute right-4 top-3 bg-black px-2.5 py-1.5 font-display text-base font-extrabold leading-none text-white [font-stretch:118%] md:right-5 md:top-5 md:px-3 md:py-2 md:text-lg" data-price>$37.99</span>
             </div>
             <figcaption class="mt-4 hidden items-center justify-between gap-4 lg:flex">
-              <span class="type-label text-gray-400">The Cloud Sherpa Hoodie</span>
-              <span class="type-label text-gray-400">Non-electronic</span>
+              <span class="type-label text-gray-600">The Cloud Sherpa Hoodie</span>
+              <span class="type-label text-gray-600">Non-electronic</span>
             </figcaption>
           </figure>
         </div>
 
         <!-- Copy + CTA -->
-        <div class="hero-copy relative z-10 -mt-3 flex flex-col px-4 pb-8 sm:px-6 md:order-1 md:col-span-6 md:mt-0 md:justify-center md:py-14 lg:col-span-7 lg:px-10 lg:py-20">
-          <p class="type-label flex items-center gap-3 text-gray-300">
-            <span class="text-white">01</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>Limited holiday drop
+        <div class="hero-copy relative z-10 flex flex-col pt-5 px-4 pb-8 sm:px-6 md:order-1 md:col-span-6 md:mt-0 md:justify-center md:py-14 lg:col-span-7 lg:px-10 lg:py-20">
+          <p class="type-label flex items-center gap-3 text-gray-700">
+            <span class="text-black">01</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>Limited holiday drop
           </p>
           <h1 id="hero-title" class="type-display mt-3 max-w-[13ch] text-balance text-[clamp(1.85rem,9vw,4.5rem)] md:mt-6 md:text-[min(5.6vw,6.25rem)] lg:text-[min(5.4vw,6.25rem)]">
             The warmest thing you'll never charge.
           </h1>
-          <p class="mt-3 max-w-[34rem] text-[0.975rem] leading-relaxed text-gray-300 md:mt-6 md:text-lg">
+          <p class="mt-3 max-w-[34rem] text-[0.975rem] leading-relaxed text-gray-700 md:mt-6 md:text-lg">
             Zero-hassle and non-electronic: no batteries, no cords, nothing to break. Just heavyweight sherpa comfort for cozy holiday nights.
           </p>
           <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-9">
@@ -198,7 +199,7 @@
               <svg class="size-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
-          <ul class="mt-3.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-gray-300 md:mt-4 md:gap-x-3" aria-label="Order benefits">
+          <ul class="mt-3.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-gray-700 md:mt-4 md:gap-x-3" aria-label="Order benefits">
             <li>Free shipping today</li>
             <li aria-hidden="true" class="text-gray-500">/</li>
             <li>30-day returns</li>
@@ -210,7 +211,7 @@
     </section>
 
     <!-- Trust marquee (decorative motion; the same facts are listed in full below) -->
-    <div class="marquee-band relative border-b border-gray-800 bg-black" data-marquee>
+    <div class="marquee-band relative border-b border-gray-200 bg-white" data-marquee>
       <p class="sr-only">Free shipping today. Ships within 24 hours. 30-day zero-risk returns. No batteries, no cords, no charging. SSL-encrypted checkout. 24/7 support.</p>
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
@@ -229,39 +230,39 @@
     </div>
 
     <!-- ======================================================================== 02 TRUST BADGES -->
-    <section id="trust" class="border-b border-gray-800" aria-labelledby="trust-title">
+    <section id="trust" class="border-b border-gray-200" aria-labelledby="trust-title">
       <div class="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 md:py-24 lg:px-10">
-        <div class="type-label flex items-center gap-4 text-gray-400">
-          <span class="text-white">02</span><span class="h-px flex-1 bg-gray-800" aria-hidden="true"></span><span>Bought with confidence</span>
+        <div class="type-label flex items-center gap-4 text-gray-600">
+          <span class="text-black">02</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>Bought with confidence</span>
         </div>
         <h2 id="trust-title" class="type-display mt-8 max-w-[18ch] text-balance text-[clamp(1.75rem,6.4vw,3.75rem)]">Zero hassle from cart to doorstep.</h2>
 
-        <ul class="mt-10 grid border-t border-gray-800 md:mt-14 lg:grid-cols-3 lg:border-l">
-          <li class="flex gap-5 border-b border-gray-800 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
+        <ul class="mt-10 grid border-t border-gray-200 md:mt-14 lg:grid-cols-3 lg:border-l">
+          <li class="flex gap-5 border-b border-gray-200 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
             <span class="grid size-12 shrink-0 place-items-center border border-gray-500 md:size-14" aria-hidden="true">
               <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"/></svg>
             </span>
             <div>
               <h3 class="font-display text-lg font-bold uppercase leading-tight [font-stretch:112%] md:text-xl">Secure Checkout</h3>
-              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-400">SSL-encrypted from your first click to your final payment.</p>
+              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-600">SSL-encrypted from your first click to your final payment.</p>
             </div>
           </li>
-          <li class="flex gap-5 border-b border-gray-800 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
+          <li class="flex gap-5 border-b border-gray-200 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
             <span class="grid size-12 shrink-0 place-items-center border border-gray-500 md:size-14" aria-hidden="true">
               <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3.5" y="13.5" width="4" height="6" rx="1"/><rect x="16.5" y="13.5" width="4" height="6" rx="1"/><path d="M18.5 19.5c0 1.4-1.1 2-2.5 2h-3"/></svg>
             </span>
             <div>
               <h3 class="font-display text-lg font-bold uppercase leading-tight [font-stretch:112%] md:text-xl">24/7 Support</h3>
-              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-400">Real people, any hour, at <a class="link" href="mailto:support@trendingarrivals.com">support@trendingarrivals.com</a>.</p>
+              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-600">Real people, any hour, at <a class="link" href="mailto:support@trendingarrivals.com">support@trendingarrivals.com</a>.</p>
             </div>
           </li>
-          <li class="flex gap-5 border-b border-gray-800 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
+          <li class="flex gap-5 border-b border-gray-200 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10">
             <span class="grid size-12 shrink-0 place-items-center border border-gray-500 md:size-14" aria-hidden="true">
               <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><path d="M2.5 6.5h11v10h-11zM13.5 9.5h4l3.5 3.5v3.5h-7.5"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
             </span>
             <div>
               <h3 class="font-display text-lg font-bold uppercase leading-tight [font-stretch:112%] md:text-xl">Fast Holiday Fulfillment</h3>
-              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-400">Every order ships within 24 hours, and shipping is free today.</p>
+              <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-gray-600">Every order ships within 24 hours, and shipping is free today.</p>
             </div>
           </li>
         </ul>
@@ -269,49 +270,49 @@
     </section>
 
     <!-- ===================================================================== 03 PRODUCT HIGHLIGHTS -->
-    <section id="highlights" class="border-b border-gray-800" aria-labelledby="highlights-title">
+    <section id="highlights" class="border-b border-gray-200" aria-labelledby="highlights-title">
       <div class="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 md:py-24 lg:px-10">
-        <div class="type-label flex items-center gap-4 text-gray-400">
-          <span class="text-white">03</span><span class="h-px flex-1 bg-gray-800" aria-hidden="true"></span><span>Built different</span>
+        <div class="type-label flex items-center gap-4 text-gray-600">
+          <span class="text-black">03</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>Built different</span>
         </div>
         <div class="mt-8 grid gap-6 md:grid-cols-12 md:items-end">
           <h2 id="highlights-title" class="type-display max-w-[16ch] text-balance text-[clamp(1.75rem,6.4vw,3.75rem)] md:col-span-8">Made for comfort, not for a charger.</h2>
-          <p class="max-w-md text-base leading-relaxed text-gray-400 md:col-span-4 md:justify-self-end">Heated gear dies, tangles and breaks. This is warmth the old-school way: dense materials, smart construction, zero electronics.</p>
+          <p class="max-w-md text-base leading-relaxed text-gray-600 md:col-span-4 md:justify-self-end">Heated gear dies, tangles and breaks. This is warmth the old-school way: dense materials, smart construction, zero electronics.</p>
         </div>
 
         <div class="mt-10 grid gap-4 md:mt-14 md:gap-5 lg:grid-cols-3">
-          <article class="card flex flex-col bg-charcoal md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
-            <div class="aspect-[4/3] overflow-hidden bg-gray-900 md:aspect-square">
+          <article class="card flex flex-col bg-gray-100 md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
+            <div class="aspect-[4/3] overflow-hidden bg-gray-100 md:aspect-square">
               <img src="assets/images/detail-sherpa.svg" width="1200" height="1200" loading="lazy" decoding="async" alt="Macro view of the plush, dense sherpa lining" class="card__img size-full object-cover">
             </div>
             <div class="flex flex-1 flex-col p-6 md:justify-center md:p-8 lg:justify-start">
-              <span class="type-label text-gray-400">01 / Materials</span>
+              <span class="type-label text-gray-600">01 / Materials</span>
               <h3 class="mt-3 font-display text-xl font-bold uppercase leading-tight [font-stretch:112%] lg:text-2xl">High-Grade Materials</h3>
-              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-400">A heavyweight shell over thick, plush sherpa that traps your own body heat. Warm the second it's on. No warm-up, no settings.</p>
+              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-600">A heavyweight shell over thick, plush sherpa that traps your own body heat. Warm the second it's on. No warm-up, no settings.</p>
             </div>
           </article>
 
-          <article class="card flex flex-col bg-charcoal md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
-            <div class="relative flex aspect-[4/3] flex-col justify-between overflow-hidden border-b border-gray-800 bg-black p-6 md:aspect-square md:border-b-0 md:border-r lg:border-b lg:border-r-0 lg:p-8">
-              <span class="type-label text-gray-400">Money-back guarantee</span>
+          <article class="card flex flex-col bg-gray-100 md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
+            <div class="relative flex aspect-[4/3] flex-col justify-between overflow-hidden border-b border-gray-200 bg-white p-6 md:aspect-square md:border-b-0 md:border-r lg:border-b lg:border-r-0 lg:p-8">
+              <span class="type-label text-gray-600">Money-back guarantee</span>
               <p class="type-display text-[clamp(4.5rem,24vw,9rem)] leading-[0.8]" aria-hidden="true">30</p>
               <p class="font-display text-2xl font-extrabold uppercase leading-none [font-stretch:125%]" aria-hidden="true">Day zero-risk<br>returns</p>
             </div>
             <div class="flex flex-1 flex-col p-6 md:justify-center md:p-8 lg:justify-start">
-              <span class="type-label text-gray-400">02 / Guarantee</span>
+              <span class="type-label text-gray-600">02 / Guarantee</span>
               <h3 class="mt-3 font-display text-xl font-bold uppercase leading-tight [font-stretch:112%] lg:text-2xl">Zero-Return Risk</h3>
-              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-400">Wear it for 30 days. If it's not the coziest thing you own, send it back for a full refund. Your money is never stuck.</p>
+              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-600">Wear it for 30 days. If it's not the coziest thing you own, send it back for a full refund. Your money is never stuck.</p>
             </div>
           </article>
 
-          <article class="card flex flex-col bg-charcoal md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
-            <div class="aspect-[4/3] overflow-hidden bg-gray-900 md:aspect-square">
+          <article class="card flex flex-col bg-gray-100 md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:flex">
+            <div class="aspect-[4/3] overflow-hidden bg-gray-100 md:aspect-square">
               <img src="assets/images/detail-stitching.svg" width="1200" height="1200" loading="lazy" decoding="async" alt="Close-up of a reinforced double-stitched cuff seam" class="card__img size-full object-cover">
             </div>
             <div class="flex flex-1 flex-col p-6 md:justify-center md:p-8 lg:justify-start">
-              <span class="type-label text-gray-400">03 / Construction</span>
+              <span class="type-label text-gray-600">03 / Construction</span>
               <h3 class="mt-3 font-display text-xl font-bold uppercase leading-tight [font-stretch:112%] lg:text-2xl">Premium Stitching</h3>
-              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-400">Reinforced double-stitched seams and cuffs, built for daily wear, couch marathons and wash after wash.</p>
+              <p class="mt-2 text-[0.9375rem] leading-relaxed text-gray-600">Reinforced double-stitched seams and cuffs, built for daily wear, couch marathons and wash after wash.</p>
             </div>
           </article>
         </div>
@@ -319,9 +320,9 @@
     </section>
 
     <!-- No-electronics statement band -->
-    <section class="border-b border-gray-800" aria-labelledby="unplugged-title">
+    <section class="border-b border-gray-200" aria-labelledby="unplugged-title">
       <div class="mx-auto grid max-w-[90rem] md:grid-cols-12">
-        <div class="relative md:col-span-5 md:border-r md:border-gray-800">
+        <div class="relative md:col-span-5 md:border-r md:border-gray-200">
           <img src="assets/images/detail-lifestyle.svg" width="1200" height="1200" loading="lazy" decoding="async" alt="The hoodie by a frosted window on a snowy holiday night" class="aspect-[4/3] size-full object-cover md:aspect-auto md:h-full">
         </div>
         <div class="flex flex-col justify-center px-4 py-14 sm:px-6 md:col-span-7 md:px-10 md:py-20 lg:px-16">
@@ -331,37 +332,37 @@
             <span class="block text-gray-500">No breakdowns.</span>
             <span class="block">Just warmth.</span>
           </h2>
-          <p class="mt-6 max-w-md text-base leading-relaxed text-gray-400">Nothing to charge before the drive, nothing to untangle on the couch, nothing to fail by February. Throw it on and it works, every single time.</p>
+          <p class="mt-6 max-w-md text-base leading-relaxed text-gray-600">Nothing to charge before the drive, nothing to untangle on the couch, nothing to fail by February. Throw it on and it works, every single time.</p>
         </div>
       </div>
     </section>
 
     <!-- ============================================================================ 04 BUY BOX -->
-    <section id="buy" class="border-b border-gray-800" aria-labelledby="buy-title">
+    <section id="buy" class="border-b border-gray-200" aria-labelledby="buy-title">
       <div class="buy-grid mx-auto grid max-w-[90rem] gap-6 px-4 py-14 sm:px-6 md:grid-cols-12 md:grid-rows-[auto_1fr] md:gap-x-8 md:gap-y-0 md:py-20 lg:gap-x-12 lg:px-10 lg:py-24">
         <!-- Name + price (first on phones so a tap on "Claim Yours" lands on the offer) -->
         <div class="md:col-span-6 md:col-start-7 md:row-start-1 lg:col-span-5 lg:col-start-8">
-          <div class="type-label flex items-center gap-4 text-gray-400">
-            <span class="text-white">04</span><span class="h-px flex-1 bg-gray-800" aria-hidden="true"></span><span>The drop</span>
+          <div class="type-label flex items-center gap-4 text-gray-600">
+            <span class="text-black">04</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>The drop</span>
           </div>
           <h2 id="buy-title" class="type-display mt-5 text-balance text-[clamp(1.9rem,8vw,3.5rem)] md:mt-6 md:text-[clamp(1.9rem,4.4vw,3.5rem)]">The Cloud Sherpa Hoodie</h2>
           <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 md:mt-5">
-            <p class="font-display text-[2.25rem] font-extrabold leading-none text-white [font-stretch:112%] md:text-[2.5rem]"><span class="sr-only">Price: </span><span data-price>$37.99</span></p>
+            <p class="font-display text-[2.25rem] font-extrabold leading-none text-black [font-stretch:112%] md:text-[2.5rem]"><span class="sr-only">Price: </span><span data-price>$37.99</span></p>
             <p class="flex items-center gap-2" data-compare hidden>
-              <span class="sr-only">Regular price: </span><s class="text-lg text-gray-400" data-compare-price></s>
-              <span class="type-label bg-white px-2 py-1 text-black" data-save></span>
+              <span class="sr-only">Regular price: </span><s class="text-lg text-gray-600" data-compare-price></s>
+              <span class="type-label bg-black px-2 py-1 text-white" data-save></span>
             </p>
-            <p class="type-label text-gray-300">USD &middot; Free shipping today</p>
+            <p class="type-label text-gray-700">USD &middot; Free shipping today</p>
           </div>
         </div>
 
         <!-- Gallery -->
         <div class="md:col-span-6 md:col-start-1 md:row-span-2 md:row-start-1 lg:col-span-7">
           <div class="gallery md:sticky md:top-[calc(var(--header-h)+1.5rem)] lg:grid lg:grid-cols-[5rem_minmax(0,1fr)] lg:items-start lg:gap-3">
-            <div class="relative aspect-square overflow-hidden bg-gray-100">
+            <div class="relative aspect-square overflow-hidden bg-gray-900">
               <img id="gallery-main" src="assets/images/product-onyx.svg" width="1200" height="1200" loading="lazy" decoding="async"
                    alt="The Cloud Sherpa Hoodie in Onyx, front view" class="gallery__main size-full object-cover">
-              <span class="gallery__count type-label absolute bottom-3 left-3 bg-black px-2 py-1 text-white" aria-hidden="true"><span data-gallery-index>01</span> / 06</span>
+              <span class="gallery__count type-label absolute bottom-3 left-3 bg-white px-2 py-1 text-black" aria-hidden="true"><span data-gallery-index>01</span> / 06</span>
             </div>
             <ul class="mt-2 grid grid-cols-6 gap-1 min-[360px]:gap-2 lg:order-first lg:mt-0 lg:grid-cols-1 lg:content-start lg:gap-2" aria-label="Product images">
               <li><button type="button" class="thumb" data-thumb data-color="onyx" data-src="assets/images/product-onyx.svg" data-alt="The Cloud Sherpa Hoodie in Onyx, front view" aria-label="Show Onyx colour" aria-current="true"><img src="assets/images/product-onyx.svg" width="1200" height="1200" loading="lazy" decoding="async" alt=""></button></li>
@@ -376,17 +377,17 @@
 
         <!-- Options + purchase -->
         <div class="md:col-span-6 md:col-start-7 md:row-start-2 md:mt-6 lg:col-span-5 lg:col-start-8">
-          <ul class="space-y-2.5 text-[0.9375rem] leading-snug text-gray-300">
-            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Heavyweight sherpa lining that holds heat for hours</li>
-            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Non-electronic: no batteries, cords or charging, ever</li>
-            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Oversized wearable-blanket cut with a deep front pocket</li>
-            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Reinforced double stitching on every seam and cuff</li>
+          <ul class="space-y-2.5 text-[0.9375rem] leading-snug text-gray-700">
+            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Heavyweight sherpa lining that holds heat for hours</li>
+            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Non-electronic: no batteries, cords or charging, ever</li>
+            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Oversized wearable-blanket cut with a deep front pocket</li>
+            <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>Reinforced double stitching on every seam and cuff</li>
           </ul>
 
-          <form id="product-form" class="mt-8 space-y-6 border-t border-gray-800 pt-6" novalidate>
+          <form id="product-form" class="mt-8 space-y-6 border-t border-gray-200 pt-6" novalidate>
             <!-- Colour -->
             <fieldset>
-              <legend class="type-label text-gray-400">Color: <span class="text-white" data-color-name>Onyx</span></legend>
+              <legend class="type-label text-gray-600">Color: <span class="text-black" data-color-name>Onyx</span></legend>
               <div class="mt-3 grid grid-cols-3 gap-2">
                 <label class="swatch">
                   <input type="radio" name="color" value="onyx" class="swatch__input" checked>
@@ -405,7 +406,7 @@
 
             <!-- Size -->
             <div>
-              <label for="size" class="type-label block text-gray-400">Size</label>
+              <label for="size" class="type-label block text-gray-600">Size</label>
               <div class="select-wrap mt-3">
                 <select id="size" name="size" class="field" aria-describedby="size-hint">
                   <option value="standard" selected>Standard (fits S–L)</option>
@@ -413,13 +414,13 @@
                 </select>
                 <svg class="select-wrap__icon size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
               </div>
-              <p id="size-hint" class="mt-2 text-[0.8125rem] leading-snug text-gray-400">Both sizes are cut roomy. Between sizes? Standard drapes relaxed; Oversized gives the full wearable-blanket feel.</p>
+              <p id="size-hint" class="mt-2 text-[0.8125rem] leading-snug text-gray-600">Both sizes are cut roomy. Between sizes? Standard drapes relaxed; Oversized gives the full wearable-blanket feel.</p>
             </div>
 
             <!-- Quantity + live total -->
             <div class="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <label for="qty" class="type-label block text-gray-400" id="qty-label">Quantity</label>
+                <label for="qty" class="type-label block text-gray-600" id="qty-label">Quantity</label>
                 <div class="stepper mt-3" role="group" aria-labelledby="qty-label">
                   <button type="button" class="stepper__btn" data-qty-dec aria-label="Decrease quantity" aria-disabled="true">
                     <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg>
@@ -432,7 +433,7 @@
                 <p id="qty-hint" class="sr-only">Choose 1 to 10.</p>
               </div>
               <p class="text-right" aria-live="polite" aria-atomic="true">
-                <span class="type-label block text-gray-400">Total</span>
+                <span class="type-label block text-gray-600">Total</span>
                 <span class="mt-1 block font-display text-2xl font-extrabold leading-none [font-stretch:112%]" data-buy-total>$37.99</span>
               </p>
             </div>
@@ -449,28 +450,28 @@
 
           <!-- Reassurance stack -->
           <div class="mt-5 space-y-4">
-            <p class="countdown flex items-center gap-2.5 text-[0.9375rem] text-gray-300" data-countdown>
+            <p class="countdown flex items-center gap-2.5 text-[0.9375rem] text-gray-700" data-countdown>
               <span class="live-dot" aria-hidden="true"></span>
               <span data-countdown-fallback>Order today for free shipping.</span>
-              <span data-countdown-live hidden>Order in <span class="font-mono font-medium tabular-nums text-white" role="timer" data-countdown-time>00:00:00</span> for free shipping today</span>
+              <span data-countdown-live hidden>Order in <span class="font-mono font-medium tabular-nums text-black" role="timer" data-countdown-time>00:00:00</span> for free shipping today</span>
             </p>
             <ul class="flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
               <li class="pay-badge">Visa</li><li class="pay-badge">MC</li><li class="pay-badge">Amex</li><li class="pay-badge">Discover</li><li class="pay-badge">PayPal</li>
             </ul>
-            <ul class="divide-y divide-gray-800 border-y border-gray-800 text-[0.875rem] text-gray-300">
+            <ul class="divide-y divide-gray-200 border-y border-gray-200 text-[0.875rem] text-gray-700">
               <li class="flex items-center gap-3 py-3">
-                <svg class="size-5 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.3 7.5 9.5 4.3-1.2 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.4-4.6"/></svg>
-                <span><strong class="font-semibold text-white">30-day zero-risk returns.</strong> Love it or get your money back.</span>
+                <svg class="size-5 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.3 7.5 9.5 4.3-1.2 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.4-4.6"/></svg>
+                <span><strong class="font-semibold text-black">30-day zero-risk returns.</strong> Love it or get your money back.</span>
               </li>
               <li class="flex items-center gap-3 py-3">
-                <svg class="size-5 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
-                <span><strong class="font-semibold text-white">SSL-encrypted secure checkout.</strong> Your details stay private.</span>
+                <svg class="size-5 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+                <span><strong class="font-semibold text-black">SSL-encrypted secure checkout.</strong> Your details stay private.</span>
               </li>
             </ul>
           </div>
 
           <!-- Accordions -->
-          <div class="accordion mt-6 border-b border-gray-800">
+          <div class="accordion mt-6 border-b border-gray-200">
             <details class="acc" name="product-info">
               <summary>Details &amp; Materials</summary>
               <div class="acc__body">
@@ -501,18 +502,18 @@
     </section>
 
     <!-- ================================================================================ 05 FAQ -->
-    <section id="faq" class="border-b border-gray-800" aria-labelledby="faq-title">
+    <section id="faq" class="border-b border-gray-200" aria-labelledby="faq-title">
       <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:px-10">
         <div class="lg:col-span-4">
           <div class="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
-            <div class="type-label flex items-center gap-4 text-gray-400">
-              <span class="text-white">05</span><span class="h-px flex-1 bg-gray-800" aria-hidden="true"></span><span>Questions</span>
+            <div class="type-label flex items-center gap-4 text-gray-600">
+              <span class="text-black">05</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>Questions</span>
             </div>
             <h2 id="faq-title" class="type-display mt-8 text-[clamp(1.75rem,6.4vw,3.75rem)]">Asked &amp; answered.</h2>
-            <p class="mt-4 max-w-sm text-base leading-relaxed text-gray-400">Still unsure? Email <a class="link" href="mailto:support@trendingarrivals.com">support@trendingarrivals.com</a>. We reply around the clock.</p>
+            <p class="mt-4 max-w-sm text-base leading-relaxed text-gray-600">Still unsure? Email <a class="link" href="mailto:support@trendingarrivals.com">support@trendingarrivals.com</a>. We reply around the clock.</p>
           </div>
         </div>
-        <div class="faq border-t border-gray-800 lg:col-span-8">
+        <div class="faq border-t border-gray-200 lg:col-span-8">
           <details class="acc acc--lg">
             <summary>How fast will it ship?</summary>
             <div class="acc__body"><p>Every order ships within 24 hours, and shipping is free on orders placed today. You'll get a tracking link by email the moment it leaves us, with a live delivery estimate for your address.</p></div>
@@ -548,15 +549,15 @@
     <!-- ========================================================================== 06 FINAL CTA -->
     <section id="final-cta" class="relative overflow-hidden" aria-labelledby="final-title">
       <div class="mx-auto max-w-[90rem] px-4 py-20 sm:px-6 md:py-28 lg:px-10">
-        <div class="type-label flex items-center gap-4 text-gray-400">
-          <span class="text-white">06</span><span class="h-px flex-1 bg-gray-800" aria-hidden="true"></span><span>Last call tonight</span>
+        <div class="type-label flex items-center gap-4 text-gray-600">
+          <span class="text-black">06</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>Last call tonight</span>
         </div>
         <h2 id="final-title" class="type-display mt-8 max-w-[14ch] text-[clamp(2.4rem,10.5vw,8rem)] leading-[0.88]">Stay warm. Skip the charger.</h2>
         <div class="mt-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p class="countdown flex items-center gap-2.5 text-base text-gray-300" data-countdown>
+          <p class="countdown flex items-center gap-2.5 text-base text-gray-700" data-countdown>
             <span class="live-dot" aria-hidden="true"></span>
             <span data-countdown-fallback>Order today for free shipping.</span>
-            <span data-countdown-live hidden>Order in <span class="font-mono font-medium tabular-nums text-white" role="timer" data-countdown-time>00:00:00</span> for free shipping today</span>
+            <span data-countdown-live hidden>Order in <span class="font-mono font-medium tabular-nums text-black" role="timer" data-countdown-time>00:00:00</span> for free shipping today</span>
           </p>
           <a href="#buy" class="btn-primary group md:min-w-[22rem]">
             <span>Claim Yours Now - <span data-price>$37.99</span></span>
@@ -568,12 +569,12 @@
   </main>
 
   <!-- =================================================================================== FOOTER -->
-  <footer class="site-footer border-t border-gray-800 bg-black">
+  <footer class="site-footer border-t border-gray-200 bg-white">
     <div class="mx-auto max-w-[90rem] px-4 pt-14 sm:px-6 lg:px-10">
       <div class="grid gap-10 md:grid-cols-12">
         <div class="md:col-span-5">
-          <img src="assets/images/logo-white.svg" width="965" height="434" loading="lazy" decoding="async" alt="Trending Arrivals" class="h-auto w-44">
-          <p class="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-gray-400">One trending piece at a time, honestly priced and shipped fast.</p>
+          <img src="assets/images/logo.svg" width="965" height="434" loading="lazy" decoding="async" alt="Trending Arrivals" class="h-auto w-44">
+          <p class="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-gray-600">One trending piece at a time, honestly priced and shipped fast.</p>
         </div>
         <nav class="md:col-span-7" aria-label="Legal and support">
           <ul class="grid grid-cols-2 gap-x-6 sm:grid-cols-4">
@@ -588,7 +589,7 @@
       <svg class="footer-wordmark mt-14 select-none" viewBox="0 0 1000 118" aria-hidden="true" focusable="false">
         <text x="0" y="108" textLength="1000" lengthAdjust="spacingAndGlyphs">TRENDING ARRIVALS</text>
       </svg>
-      <div class="flex flex-col gap-2 border-t border-gray-800 py-6 text-[0.8125rem] text-gray-400 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-col gap-2 border-t border-gray-200 py-6 text-[0.8125rem] text-gray-600 sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; <span data-year>2026</span> Trending Arrivals. All rights reserved.</p>
         <p>Prices in USD &middot; <a class="link" href="mailto:support@trendingarrivals.com">support@trendingarrivals.com</a></p>
       </div>
@@ -598,10 +599,10 @@
   <!-- ========================================================================= MOBILE BUY BAR -->
   <aside class="sticky-buy" id="sticky-buy" aria-label="Quick buy" data-visible="false" aria-hidden="true" inert>
     <div class="flex items-center gap-3 px-4 py-3">
-      <img src="assets/images/product-onyx.svg" width="1200" height="1200" loading="lazy" decoding="async" alt="" class="size-11 shrink-0 bg-gray-100 object-cover" data-sticky-thumb>
+      <img src="assets/images/product-onyx.svg" width="1200" height="1200" loading="lazy" decoding="async" alt="" class="size-11 shrink-0 bg-gray-900 object-cover" data-sticky-thumb>
       <div class="min-w-0 flex-1">
         <p class="truncate text-sm font-semibold">Cloud Sherpa Hoodie</p>
-        <p class="truncate text-[0.8125rem] text-gray-300"><span class="font-semibold text-white" data-price>$37.99</span> &middot; Free shipping today</p>
+        <p class="truncate text-[0.8125rem] text-gray-700"><span class="font-semibold text-black" data-price>$37.99</span> &middot; Free shipping today</p>
       </div>
       <a href="#buy" class="btn-primary btn-primary--sm shrink-0">Claim Yours</a>
     </div>
@@ -610,53 +611,53 @@
   <!-- =========================================================================== CART DRAWER -->
   <dialog id="cart-drawer" class="modal drawer" aria-labelledby="cart-title">
     <div class="flex h-full flex-col">
-      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-800 pl-5 pr-2">
-        <h2 id="cart-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Your cart <span class="text-gray-400" data-cart-count-text>(0)</span></h2>
+      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 pl-5 pr-2">
+        <h2 id="cart-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Your cart <span class="text-gray-600" data-cart-count-text>(0)</span></h2>
         <button type="button" class="icon-btn" data-modal-close aria-label="Close cart">
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </div>
-      <p class="flex shrink-0 items-center gap-2 border-b border-gray-800 bg-charcoal px-5 py-3 text-[0.8125rem] text-gray-300">
-        <svg class="size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>
-        <span><strong class="font-semibold text-white">Free shipping unlocked</strong> on today's order</span>
+      <p class="flex shrink-0 items-center gap-2 border-b border-gray-200 bg-gray-100 px-5 py-3 text-[0.8125rem] text-gray-700">
+        <svg class="size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>
+        <span><strong class="font-semibold text-black">Free shipping unlocked</strong> on today's order</span>
       </p>
       <div class="sr-only" aria-live="polite" aria-atomic="true" data-live></div>
 
       <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-        <ul class="divide-y divide-gray-800 px-5" data-cart-lines></ul>
+        <ul class="divide-y divide-gray-200 px-5" data-cart-lines></ul>
         <div class="flex h-full flex-col items-center justify-center gap-5 px-6 py-16 text-center" data-cart-empty hidden>
           <svg class="size-10 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12.5H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
           <div>
             <p class="font-display text-xl font-extrabold uppercase [font-stretch:118%]">Your cart is empty</p>
-            <p class="mt-2 text-[0.9375rem] text-gray-400">Free shipping is still on for today's orders.</p>
+            <p class="mt-2 text-[0.9375rem] text-gray-600">Free shipping is still on for today's orders.</p>
           </div>
           <button type="button" class="btn-primary" data-shop-now>Shop the Hoodie</button>
         </div>
       </div>
 
-      <div class="shrink-0 border-t border-gray-800 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5" data-cart-footer>
+      <div class="shrink-0 border-t border-gray-200 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5" data-cart-footer>
         <dl class="space-y-2 text-[0.9375rem]">
-          <div class="flex justify-between"><dt class="text-gray-400">Subtotal</dt><dd data-cart-subtotal>$0.00</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Shipping</dt><dd>Free</dd></div>
-          <div class="flex justify-between border-t border-gray-800 pt-3 text-lg font-semibold"><dt>Total</dt><dd data-cart-total>$0.00</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-600">Subtotal</dt><dd data-cart-subtotal>$0.00</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-600">Shipping</dt><dd>Free</dd></div>
+          <div class="flex justify-between border-t border-gray-200 pt-3 text-lg font-semibold"><dt>Total</dt><dd data-cart-total>$0.00</dd></div>
         </dl>
         <button type="button" class="btn-primary mt-4 w-full" data-checkout>
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
           <span>Secure Checkout &mdash; <span data-cart-total>$0.00</span></span>
         </button>
-        <p class="mt-3 text-center text-[0.8125rem] text-gray-400">SSL-encrypted &middot; Ships within 24 hours &middot; 30-day returns</p>
+        <p class="mt-3 text-center text-[0.8125rem] text-gray-600">SSL-encrypted &middot; Ships within 24 hours &middot; 30-day returns</p>
       </div>
     </div>
   </dialog>
 
   <template id="tpl-cart-line">
     <li class="flex gap-4 py-5" data-line>
-      <img src="" width="1200" height="1200" alt="" class="size-20 shrink-0 bg-gray-100 object-cover" data-line-img>
+      <img src="" width="1200" height="1200" alt="" class="size-20 shrink-0 bg-gray-900 object-cover" data-line-img>
       <div class="flex min-w-0 flex-1 flex-col gap-3">
         <div class="flex items-start justify-between gap-3">
           <div class="min-w-0">
             <p class="text-[0.9375rem] font-semibold leading-snug" data-line-name>The Cloud Sherpa Hoodie</p>
-            <p class="mt-0.5 text-[0.8125rem] text-gray-400" data-line-variant></p>
+            <p class="mt-0.5 text-[0.8125rem] text-gray-600" data-line-variant></p>
           </div>
           <p class="shrink-0 text-[0.9375rem] font-semibold" data-line-total></p>
         </div>
@@ -679,7 +680,7 @@
   <!-- ======================================================================= DEMO CHECKOUT -->
   <dialog id="checkout" class="modal checkout" aria-labelledby="checkout-title">
     <div class="flex h-full flex-col">
-      <div class="flex shrink-0 items-center justify-between gap-3 border-b border-gray-800 pl-5 pr-2 py-2">
+      <div class="flex shrink-0 items-center justify-between gap-3 border-b border-gray-200 pl-5 pr-2 py-2">
         <div class="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
           <h2 id="checkout-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Checkout</h2>
           <span class="demo-badge">Demo checkout &mdash; no payment is processed</span>
@@ -700,7 +701,7 @@
             </ol>
 
             <!-- Mobile order summary (collapsible) -->
-            <details class="summary-mobile mt-6 border-y border-gray-800 lg:hidden" data-summary-mobile>
+            <details class="summary-mobile mt-6 border-y border-gray-200 lg:hidden" data-summary-mobile>
               <summary class="flex min-h-12 cursor-pointer items-center justify-between gap-3 py-3 text-[0.9375rem]">
                 <span class="flex items-center gap-2">Show order summary <svg class="summary-chev size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span>
                 <span class="font-semibold" data-co-total>$0.00</span>
@@ -764,7 +765,7 @@
                 <h3 class="font-display text-xl font-extrabold uppercase [font-stretch:112%]" tabindex="-1" data-step-heading>Payment</h3>
                 <button type="button" class="text-btn" data-co-back>Edit shipping</button>
               </div>
-              <p class="mt-2 text-[0.875rem] text-gray-400" data-ship-to></p>
+              <p class="mt-2 text-[0.875rem] text-gray-600" data-ship-to></p>
               <div class="mt-5 grid grid-cols-2 gap-4">
                 <div class="col-span-2">
                   <label class="co-label" for="co-card">Card number</label>
@@ -779,15 +780,15 @@
                   <input class="field field--readonly font-mono" id="co-cvc" type="text" inputmode="numeric" autocomplete="off" value="123" readonly aria-describedby="co-demo-note">
                 </div>
               </div>
-              <p id="co-demo-note" class="mt-4 flex gap-2.5 border border-gray-700 bg-charcoal p-3 text-[0.8125rem] leading-relaxed text-gray-300">
-                <svg class="mt-0.5 size-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+              <p id="co-demo-note" class="mt-4 flex gap-2.5 border border-gray-300 bg-gray-100 p-3 text-[0.8125rem] leading-relaxed text-gray-700">
+                <svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
                 <span>Demo mode: these test card details are read-only and nothing is charged or sent anywhere. Connect Shopify or Stripe before launch to accept real payments.</span>
               </p>
               <button type="submit" class="btn-primary mt-6 w-full" data-pay>
                 <span class="spinner" aria-hidden="true"></span>
                 <span data-pay-label>Pay <span data-co-total>$0.00</span></span>
               </button>
-              <p class="mt-3 flex items-center justify-center gap-2 text-[0.8125rem] text-gray-400">
+              <p class="mt-3 flex items-center justify-center gap-2 text-[0.8125rem] text-gray-600">
                 <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
                 SSL-encrypted &middot; 30-day zero-risk returns
               </p>
@@ -795,20 +796,20 @@
 
             <!-- Step 3: success -->
             <div class="co-step mt-8" data-step="3" hidden>
-              <span class="grid size-14 place-items-center bg-white text-black" aria-hidden="true">
+              <span class="grid size-14 place-items-center bg-black text-white" aria-hidden="true">
                 <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>
               </span>
               <h3 class="type-display mt-6 text-[clamp(2rem,7vw,3rem)]" tabindex="-1" data-step-heading>Order confirmed.</h3>
-              <p class="mt-4 text-base leading-relaxed text-gray-300">Thanks<span data-co-firstname></span>! Your demo order <strong class="font-mono font-medium text-white" data-order-id>TA-000000</strong> is confirmed.</p>
-              <p class="mt-2 text-base leading-relaxed text-gray-300">A confirmation would be sent to <strong class="font-semibold text-white" data-order-email></strong>.</p>
-              <p class="mt-4 text-[0.8125rem] text-gray-400">This was a demo: no payment was taken and no data left your browser.</p>
+              <p class="mt-4 text-base leading-relaxed text-gray-700">Thanks<span data-co-firstname></span>! Your demo order <strong class="font-mono font-medium text-black" data-order-id>TA-000000</strong> is confirmed.</p>
+              <p class="mt-2 text-base leading-relaxed text-gray-700">A confirmation would be sent to <strong class="font-semibold text-black" data-order-email></strong>.</p>
+              <p class="mt-4 text-[0.8125rem] text-gray-600">This was a demo: no payment was taken and no data left your browser.</p>
               <button type="button" class="btn-primary mt-8 w-full sm:w-auto" data-continue>Continue shopping</button>
             </div>
           </div>
 
           <!-- Desktop order summary -->
-          <aside class="hidden border-l border-gray-800 bg-gray-950 px-8 py-8 lg:block" aria-label="Order summary">
-            <h3 class="type-label text-gray-400">Order summary</h3>
+          <aside class="hidden border-l border-gray-200 bg-gray-50 px-8 py-8 lg:block" aria-label="Order summary">
+            <h3 class="type-label text-gray-600">Order summary</h3>
             <div class="mt-4" data-summary></div>
           </aside>
         </div>
@@ -819,14 +820,14 @@
   <!-- ===================================================================== POLICY DIALOGS -->
   <dialog id="privacy" class="modal policy" aria-labelledby="privacy-title">
     <div class="flex h-full flex-col">
-      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-800 pl-6 pr-2">
+      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 pl-6 pr-2">
         <h2 id="privacy-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Privacy Policy</h2>
         <button type="button" class="icon-btn" data-modal-close aria-label="Close privacy policy">
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </div>
       <div class="policy__body min-h-0 flex-1 overflow-y-auto px-6 py-6">
-        <p class="type-label text-gray-400">Last updated: January 1, 2026 &middot; Placeholder</p>
+        <p class="type-label text-gray-600">Last updated: January 1, 2026 &middot; Placeholder</p>
         <p>This Privacy Policy explains how Trending Arrivals ("we", "us") collects, uses and protects your information when you visit this site or place an order.</p>
         <h3>Information we collect</h3>
         <p>When you order, we collect the details needed to fulfil it: your name, email, shipping address and order contents. Payments are processed by our payment provider; we never store full card numbers.</p>
@@ -845,14 +846,14 @@
 
   <dialog id="terms" class="modal policy" aria-labelledby="terms-title">
     <div class="flex h-full flex-col">
-      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-800 pl-6 pr-2">
+      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 pl-6 pr-2">
         <h2 id="terms-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Terms of Service</h2>
         <button type="button" class="icon-btn" data-modal-close aria-label="Close terms of service">
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </div>
       <div class="policy__body min-h-0 flex-1 overflow-y-auto px-6 py-6">
-        <p class="type-label text-gray-400">Last updated: January 1, 2026 &middot; Placeholder</p>
+        <p class="type-label text-gray-600">Last updated: January 1, 2026 &middot; Placeholder</p>
         <p>By using this site or placing an order with Trending Arrivals you agree to these Terms. Please read them carefully.</p>
         <h3>Orders &amp; pricing</h3>
         <p>All prices are in US dollars. We reserve the right to refuse or cancel an order, for example in case of a pricing error or suspected fraud; if we do, you will be refunded in full.</p>
@@ -871,14 +872,14 @@
 
   <dialog id="shipping" class="modal policy" aria-labelledby="shipping-title">
     <div class="flex h-full flex-col">
-      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-800 pl-6 pr-2">
+      <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 pl-6 pr-2">
         <h2 id="shipping-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Shipping &amp; Returns</h2>
         <button type="button" class="icon-btn" data-modal-close aria-label="Close shipping and returns">
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </div>
       <div class="policy__body min-h-0 flex-1 overflow-y-auto px-6 py-6">
-        <p class="type-label text-gray-400">Placeholder policy</p>
+        <p class="type-label text-gray-600">Placeholder policy</p>
         <h3>Free shipping today</h3>
         <p>Shipping is free on every order placed today, with no minimum spend.</p>
         <h3>Fast fulfillment</h3>

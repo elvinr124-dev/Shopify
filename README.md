@@ -1,6 +1,6 @@
 # Trending Arrivals: single-product landing page
 
-A mobile-first, monochrome, high-converting one-product store page, built for traffic from short-form video.
+A mobile-first, high-converting one-product store page with a white theme (black text, buttons and accents), built for traffic from short-form video.
 Plain HTML + Tailwind CSS (CDN) + vanilla JavaScript. No build step.
 
 ```
@@ -60,10 +60,10 @@ The product images in `assets/images/` are SVG placeholders. To use real photos,
 | `product-onyx.svg`, `product-charcoal.svg`, `product-bone.svg` | 1200×1200 | buy-box gallery; switches with the color |
 | `detail-sherpa.svg`, `detail-stitching.svg`, `detail-lifestyle.svg` | 1200×1200 | value cards and gallery |
 | `og-image.jpg` | 1200×630 | social share preview |
-| `logo.svg`, `logo-white.svg`, `logo-mark.svg` | – | brand logo (vector, traced from the supplied artwork) |
+| `logo.svg`, `logo-mark.svg` | – | brand logo, black (vector, traced from the supplied artwork) |
 | `favicon.svg`, `apple-touch-icon.png` | – | browser and home-screen icons |
 
-The header logo is inlined in `index.html` so it loads instantly and stays white on black.
+The header logo is inlined in `index.html` so it loads instantly.
 
 ### Checkout: demo vs. Shopify
 

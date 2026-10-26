@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="t">
-<title id="t">The Cloud Sherpa Hoodie in Onyx, rim-lit studio shot on black</title>
+<title id="t">The Cloud Sherpa Hoodie in Onyx, studio shot on a light backdrop</title>
 <defs>
 <radialGradient id="bgGlow" gradientUnits="userSpaceOnUse" cx="540" cy="600" r="640" gradientTransform="translate(540 600) scale(1 1.15) translate(-540 -600)">
-<stop offset="0" stop-color="#303030"/><stop offset=".35" stop-color="#1a1a1a"/><stop offset=".7" stop-color="#0a0a0a"/><stop offset="1" stop-color="#000"/>
+<stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#F5F5F5"/><stop offset="1" stop-color="#F5F5F5"/>
 </radialGradient>
 <linearGradient id="rimGrad" gradientUnits="userSpaceOnUse" x1="0" y1="90" x2="0" y2="1100">
 <stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#fff" stop-opacity=".75"/><stop offset=".75" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".05"/>
 </linearGradient>
 <radialGradient id="pool" cx=".5" cy=".5" r=".5">
-<stop offset="0" stop-color="#3a3a3a" stop-opacity=".8"/><stop offset=".5" stop-color="#1a1a1a" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+<stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".55" stop-color="#000" stop-opacity=".08"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
 </radialGradient>
 <radialGradient id="key" gradientUnits="userSpaceOnUse" cx="560" cy="180" r="560">
 <stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
@@ -88,14 +88,10 @@
 <feComposite in="l2" in2="d" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
 </filter>
 </defs>
-<rect width="1080" height="1350" fill="#000"/>
+<rect width="1080" height="1350" fill="#F5F5F5"/>
 <rect width="1080" height="1350" fill="url(#bgGlow)"/>
 <ellipse cx="540" cy="1222" rx="470" ry="74" fill="url(#pool)"/>
 <g transform="translate(12.0 224.3) scale(0.88)">
-<g fill="none" stroke="url(#rimGrad)" stroke-width="26" filter="url(#glowBlur)">
-<path d="M600,86 C496,86 404,146 394,258 C388,318 392,348 376,376 C350,388 320,398 292,410 C250,422 220,462 210,530 C200,607.5 192,672.3 186,728.5 C181,773.8 178,795.4 177,819.2 C176,845.1 168,868.9 166,899.1 M172,905.6 C172,943.4 171,970.4 170,992 M302,903.4 C304,819.2 318,700.4 338,590.2 M338,603.2 C334,711.2 324,884 326,970.4 C327,998.5 334,1013.6 344,1024.4 C344,1056.8 346,1078.4 348,1097.8" stroke-opacity=".2"/>
-<path d="M600,86 C704,86 796,146 806,258 C812,318 808,348 824,376 C850,388 880,398 908,410 C950,422 980,462 990,530 C1000,607.5 1008,672.3 1014,728.5 C1019,773.8 1022,795.4 1023,819.2 C1024,845.1 1032,868.9 1034,899.1 M1028,905.6 C1028,943.4 1029,970.4 1030,992 M898,903.4 C896,819.2 882,700.4 862,590.2 M862,603.2 C866,711.2 876,884 874,970.4 C873,998.5 866,1013.6 856,1024.4 C856,1056.8 854,1078.4 852,1097.8" stroke-opacity=".14"/>
-</g>
 <ellipse cx="600" cy="1124" rx="440" ry="46" fill="url(#hGFloor)"/>
 <ellipse cx="600" cy="1110" rx="300" ry="15" fill="url(#hGFloor)"/>
 <path d="M292,410 C360,372 430,350 480,342 L720,342 C770,350 840,372 908,410 C886,470 872,530 862,590.2 C866,711.2 876,884 874,970.4 C873,998.5 866,1013.6 856,1024.4 L344,1024.4 C334,1013.6 327,998.5 326,970.4 C324,884 334,711.2 338,590.2 C328,530 314,470 292,410 Z" fill="url(#hGTorso)"/>
@@ -169,8 +165,8 @@
 <path d="M553.5,672.3 h11 M636.5,682 h11" stroke="#2a2a2a" stroke-width="1.5" opacity=".7"/>
 <g clip-path="url(#sil)"><rect x="150" y="60" width="900" height="1100" fill="url(#wash)"/><rect x="150" y="60" width="900" height="1100" fill="url(#key)"/></g>
 <g clip-path="url(#sil)" fill="none" stroke="url(#rimGrad)" filter="url(#rimBlur)">
-<path d="M600,86 C496,86 404,146 394,258 C388,318 392,348 376,376 C350,388 320,398 292,410 C250,422 220,462 210,530 C200,607.5 192,672.3 186,728.5 C181,773.8 178,795.4 177,819.2 C176,845.1 168,868.9 166,899.1 M172,905.6 C172,943.4 171,970.4 170,992 M302,903.4 C304,819.2 318,700.4 338,590.2 M338,603.2 C334,711.2 324,884 326,970.4 C327,998.5 334,1013.6 344,1024.4 C344,1056.8 346,1078.4 348,1097.8" stroke-width="14" stroke-opacity=".6"/>
-<path d="M600,86 C704,86 796,146 806,258 C812,318 808,348 824,376 C850,388 880,398 908,410 C950,422 980,462 990,530 C1000,607.5 1008,672.3 1014,728.5 C1019,773.8 1022,795.4 1023,819.2 C1024,845.1 1032,868.9 1034,899.1 M1028,905.6 C1028,943.4 1029,970.4 1030,992 M898,903.4 C896,819.2 882,700.4 862,590.2 M862,603.2 C866,711.2 876,884 874,970.4 C873,998.5 866,1013.6 856,1024.4 C856,1056.8 854,1078.4 852,1097.8" stroke-width="14" stroke-opacity=".45"/>
+<path d="M600,86 C496,86 404,146 394,258 C388,318 392,348 376,376 C350,388 320,398 292,410 C250,422 220,462 210,530 C200,607.5 192,672.3 186,728.5 C181,773.8 178,795.4 177,819.2 C176,845.1 168,868.9 166,899.1 M172,905.6 C172,943.4 171,970.4 170,992 M302,903.4 C304,819.2 318,700.4 338,590.2 M338,603.2 C334,711.2 324,884 326,970.4 C327,998.5 334,1013.6 344,1024.4 C344,1056.8 346,1078.4 348,1097.8" stroke-width="14" stroke-opacity=".35"/>
+<path d="M600,86 C704,86 796,146 806,258 C812,318 808,348 824,376 C850,388 880,398 908,410 C950,422 980,462 990,530 C1000,607.5 1008,672.3 1014,728.5 C1019,773.8 1022,795.4 1023,819.2 C1024,845.1 1032,868.9 1034,899.1 M1028,905.6 C1028,943.4 1029,970.4 1030,992 M898,903.4 C896,819.2 882,700.4 862,590.2 M862,603.2 C866,711.2 876,884 874,970.4 C873,998.5 866,1013.6 856,1024.4 C856,1056.8 854,1078.4 852,1097.8" stroke-width="14" stroke-opacity=".25"/>
 <path d="M600,86 C496,86 404,146 394,258 C388,318 392,348 376,376 C350,388 320,398 292,410 C250,422 220,462 210,530 C200,607.5 192,672.3 186,728.5 C181,773.8 178,795.4 177,819.2 C176,845.1 168,868.9 166,899.1 M172,905.6 C172,943.4 171,970.4 170,992 M302,903.4 C304,819.2 318,700.4 338,590.2 M338,603.2 C334,711.2 324,884 326,970.4 C327,998.5 334,1013.6 344,1024.4 C344,1056.8 346,1078.4 348,1097.8" stroke-width="4" stroke-opacity=".95"/>
 <path d="M600,86 C704,86 796,146 806,258 C812,318 808,348 824,376 C850,388 880,398 908,410 C950,422 980,462 990,530 C1000,607.5 1008,672.3 1014,728.5 C1019,773.8 1022,795.4 1023,819.2 C1024,845.1 1032,868.9 1034,899.1 M1028,905.6 C1028,943.4 1029,970.4 1030,992 M898,903.4 C896,819.2 882,700.4 862,590.2 M862,603.2 C866,711.2 876,884 874,970.4 C873,998.5 866,1013.6 856,1024.4 C856,1056.8 854,1078.4 852,1097.8" stroke-width="4" stroke-opacity=".75"/>
 </g>

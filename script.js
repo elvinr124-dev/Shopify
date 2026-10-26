@@ -770,7 +770,7 @@
       <dl class="sum-totals">
         <div><dt>Subtotal</dt><dd>${escapeHTML(total)}</dd></div>
         <div><dt>Shipping</dt><dd>Free</dd></div>
-        <div class="is-total"><dt>Total</dt><dd>${escapeHTML(total)} <span class="text-[0.75rem] font-normal text-gray-400">${escapeHTML(CONFIG.currency)}</span></dd></div>
+        <div class="is-total"><dt>Total</dt><dd>${escapeHTML(total)} <span class="text-[0.75rem] font-normal text-gray-600">${escapeHTML(CONFIG.currency)}</span></dd></div>
       </dl>`;
     for (const t of targets) t.innerHTML = html;
   }
