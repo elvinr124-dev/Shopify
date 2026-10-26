@@ -1,0 +1,32 @@
+<section class="mx-auto max-w-[48rem] px-4 py-16 sm:px-6">
+  <a class="link" href="{{ routes.account_url }}">Back to account</a>
+  <h1 class="type-display mt-6 text-[clamp(2rem,7vw,3rem)]">Addresses</h1>
+  {%- paginate customer.addresses by 10 -%}
+    <ul class="mt-8 divide-y divide-gray-200 border-y border-gray-200">
+      {%- for address in customer.addresses -%}
+        <li class="flex flex-wrap items-start justify-between gap-4 py-5">
+          <div>{%- if address == customer.default_address -%}<p class="type-label text-gray-600">Default</p>{%- endif -%}{{ address | format_address }}</div>
+          {%- form 'customer_address', address -%}
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="text-btn">Delete</button>
+          {%- endform -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endpaginate -%}
+  <h2 class="mt-12 font-display text-lg font-bold uppercase [font-stretch:112%]">Add a new address</h2>
+  {%- form 'customer_address', customer.new_address, class: 'mt-4 grid gap-4 sm:grid-cols-2' -%}
+    {%- if form.errors -%}<div class="text-sm text-error sm:col-span-2" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div><label for="addr-first" class="type-label block text-gray-600">First name</label><input id="addr-first" type="text" name="address[first_name]" autocomplete="given-name" class="field mt-2 w-full"></div>
+    <div><label for="addr-last" class="type-label block text-gray-600">Last name</label><input id="addr-last" type="text" name="address[last_name]" autocomplete="family-name" class="field mt-2 w-full"></div>
+    <div class="sm:col-span-2"><label for="addr-1" class="type-label block text-gray-600">Address</label><input id="addr-1" type="text" name="address[address1]" autocomplete="address-line1" class="field mt-2 w-full"></div>
+    <div class="sm:col-span-2"><label for="addr-2" class="type-label block text-gray-600">Apartment, suite, etc.</label><input id="addr-2" type="text" name="address[address2]" autocomplete="address-line2" class="field mt-2 w-full"></div>
+    <div><label for="addr-city" class="type-label block text-gray-600">City</label><input id="addr-city" type="text" name="address[city]" autocomplete="address-level2" class="field mt-2 w-full"></div>
+    <div><label for="addr-zip" class="type-label block text-gray-600">ZIP / postal code</label><input id="addr-zip" type="text" name="address[zip]" autocomplete="postal-code" class="field mt-2 w-full"></div>
+    <div><label for="addr-country" class="type-label block text-gray-600">Country</label><select id="addr-country" name="address[country]" class="field mt-2 w-full">{{ all_country_option_tags }}</select></div>
+    <div><label for="addr-province" class="type-label block text-gray-600">State / province</label><input id="addr-province" type="text" name="address[province]" autocomplete="address-level1" class="field mt-2 w-full"></div>
+    <div class="sm:col-span-2"><label class="flex items-center gap-2"><input type="checkbox" name="address[default]" value="1"> Set as default address</label></div>
+    <div class="sm:col-span-2"><button type="submit" class="btn-primary">Add address</button></div>
+  {%- endform -%}
+</section>

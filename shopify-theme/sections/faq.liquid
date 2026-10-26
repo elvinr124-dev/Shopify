@@ -1,0 +1,56 @@
+{%- assign support_email = settings.support_email | default: shop.email -%}
+<section id="faq" class="border-b border-gray-200" aria-labelledby="faq-title-{{ section.id }}">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:px-10">
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
+        <div class="type-label flex items-center gap-4 text-gray-600">
+          <span class="text-black">{{ section.settings.number }}</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>{{ section.settings.eyebrow }}</span>
+        </div>
+        <h2 id="faq-title-{{ section.id }}" class="type-display mt-8 text-[clamp(1.75rem,6.4vw,3.75rem)]">{{ section.settings.heading }}</h2>
+        {%- if support_email != blank -%}
+          <p class="mt-4 max-w-sm text-base leading-relaxed text-gray-600">Still unsure? Email <a class="link" href="mailto:{{ support_email }}">{{ support_email }}</a>. We reply around the clock.</p>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="faq border-t border-gray-200 lg:col-span-8">
+      {%- for block in section.blocks -%}
+        <details class="acc acc--lg" {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="acc__body">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "number", "label": "Section number", "default": "05" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Asked & answered." }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How fast will it ship?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Every order ships within 24 hours.</p>" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "FAQ",
+    "blocks": [
+      { "type": "question", "settings": { "question": "How fast will it ship?", "answer": "<p>Every order ships within 24 hours, and shipping is free on orders placed today. You'll get a tracking link by email the moment it leaves us.</p>" } },
+      { "type": "question", "settings": { "question": "What if it doesn't fit or I don't love it?", "answer": "<p>You're covered by 30-day zero-risk returns. Email support within 30 days of delivery and we'll walk you through the return and refund your money in full.</p>" } },
+      { "type": "question", "settings": { "question": "Which size should I choose?", "answer": "<p>Standard fits most people who wear S to L; Oversized fits XL to 3XL. Both are cut generously, so if you're between sizes, Standard gives a relaxed drape and Oversized gives the full wearable-blanket feel.</p>" } },
+      { "type": "question", "settings": { "question": "How do I wash it?", "answer": "<p>Machine wash cold, inside out, on gentle. Tumble dry low or hang dry. Skip bleach and irons.</p>" } },
+      { "type": "question", "settings": { "question": "Is checkout secure?", "answer": "<p>Yes. Checkout runs on Shopify's SSL-encrypted, PCI-compliant checkout, and card details are never stored by us.</p>" } },
+      { "type": "question", "settings": { "question": "Does it need power, batteries or charging?", "answer": "<p>No. Nothing to plug in, charge or replace. The warmth comes from dense, heavyweight sherpa that traps your own body heat.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

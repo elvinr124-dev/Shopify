@@ -1,0 +1,24 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Trending Arrivals",
+    "theme_version": "1.0.0",
+    "theme_author": "Trending Arrivals",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Store",
+    "settings": [
+      { "type": "text", "id": "support_email", "label": "Support email", "default": "support@trendingarrivals.com", "info": "Shown in the footer, FAQ and cart. Leave empty to use your store email." },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon (optional)", "info": "Defaults to the TA logo mark." },
+      { "type": "text", "id": "cart_notice", "label": "Cart notice", "default": "Free shipping on today's orders" }
+    ]
+  },
+  {
+    "name": "Color swatches",
+    "settings": [
+      { "type": "textarea", "id": "swatch_colors", "label": "Swatch colors", "default": "Onyx: #000000\nBlack: #000000\nCharcoal: #3A3A3A\nGrey: #737373\nGray: #737373\nBone: #F5F5F5\nWhite: #FFFFFF\nCream: #F3EEE3", "info": "One per line as Name: #hex. Used for Color/Colour options; unknown names fall back to Shopify swatches or the CSS color name." }
+    ]
+  }
+]

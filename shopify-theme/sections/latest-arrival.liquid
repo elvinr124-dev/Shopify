@@ -1,0 +1,93 @@
+{%- comment -%}
+  Latest arrival spotlight. Shows the product picked in the theme editor, or the newest product in
+  the store when none is picked.
+{%- endcomment -%}
+{%- liquid
+  assign p = section.settings.product
+  if p == blank
+    assign p = collections.all.products | sort: 'created_at' | last
+  endif
+  assign v = p.selected_or_first_available_variant
+  assign hero_alt = p.featured_media.alt | default: p.title
+  if section.settings.link_to_product and p != blank
+    assign cta_href = p.url
+  else
+    assign cta_href = '#buy'
+  endif
+-%}
+<section id="latest" class="hero relative border-b border-gray-200" aria-labelledby="latest-title-{{ section.id }}">
+  <div class="hero-grid mx-auto grid max-w-[90rem] md:grid-cols-12">
+    <div class="relative md:order-2 md:col-span-6 md:border-l md:border-gray-200 md:p-6 lg:col-span-5 lg:p-10">
+      <figure class="relative md:flex md:h-full md:flex-col md:justify-center">
+        <div class="hero-media relative overflow-hidden {% if section.settings.image == blank and p.featured_media == blank %}bg-gray-100{% else %}bg-white{% endif %} md:aspect-4/5">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1500 | image_tag: widths: '400, 600, 800, 1000, 1200, 1500', sizes: '(min-width: 1024px) 40vw, (min-width: 768px) 50vw, 100vw', loading: 'eager', fetchpriority: 'high', class: 'size-full object-contain md:object-cover' }}
+          {%- elsif p.featured_media != blank -%}
+            {{ p.featured_media.preview_image | image_url: width: 1500 | image_tag: widths: '400, 600, 800, 1000, 1200, 1500', sizes: '(min-width: 1024px) 40vw, (min-width: 768px) 50vw, 100vw', loading: 'eager', fetchpriority: 'high', class: 'size-full object-contain md:object-cover', alt: hero_alt }}
+          {%- else -%}
+            <img src="{{ 'hero.svg' | asset_url }}" width="1080" height="1350" fetchpriority="high" loading="eager" alt="{{ p.title | default: 'Product placeholder' | escape }}" class="hero-img--placeholder size-full object-contain md:object-cover">
+          {%- endif -%}
+          {%- if v.option1 != blank and v.title != 'Default Title' -%}
+            <span class="type-label absolute left-4 top-4 text-black md:left-5 md:top-5">Fig. 01 / {{ v.option1 }}</span>
+          {%- endif -%}
+          {%- if p != blank -%}
+            <span class="hero-price absolute right-4 top-3 bg-black px-2.5 py-1.5 font-display text-base font-extrabold leading-none text-white [font-stretch:118%] md:right-5 md:top-5 md:px-3 md:py-2 md:text-lg" data-price>{{ v.price | money }}</span>
+          {%- endif -%}
+        </div>
+        {%- if p != blank -%}
+          <figcaption class="mt-4 hidden items-center justify-between gap-4 lg:flex">
+            <span class="type-label text-gray-600">{{ p.title }}</span>
+            {%- if section.settings.caption_right != blank -%}<span class="type-label text-gray-600">{{ section.settings.caption_right }}</span>{%- endif -%}
+          </figcaption>
+        {%- endif -%}
+      </figure>
+    </div>
+
+    <div class="hero-copy relative z-10 flex flex-col px-4 pb-8 pt-5 sm:px-6 md:order-1 md:col-span-6 md:justify-center md:py-14 lg:col-span-7 lg:px-10 lg:py-20">
+      <p class="type-label flex items-center gap-3 text-gray-700">
+        <span class="text-black">01</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>{{ section.settings.eyebrow }}
+        {%- if section.settings.badge != blank %}<span class="bg-black px-1.5 py-0.5 text-white">{{ section.settings.badge }}</span>{% endif %}
+      </p>
+      <h2 id="latest-title-{{ section.id }}" class="type-display mt-3 max-w-[13ch] text-balance text-[clamp(1.85rem,9vw,4.5rem)] md:mt-6 md:text-[min(5.6vw,6.25rem)] lg:text-[min(5.4vw,6.25rem)]">
+        {{ section.settings.heading | default: p.title }}
+      </h2>
+      {%- if section.settings.text != blank -%}
+        <p class="mt-3 max-w-[34rem] text-[0.975rem] leading-relaxed text-gray-700 md:mt-6 md:text-lg">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-9">
+        <a href="{{ cta_href }}" class="btn-primary group" data-hero-cta>
+          <span>{{ section.settings.cta_label }}{% if p != blank %} - <span data-price>{{ v.price | money }}</span>{% endif %}</span>
+          <svg class="size-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      {%- if section.settings.benefits != blank -%}
+        {%- assign benefits = section.settings.benefits | split: '|' -%}
+        <ul class="mt-3.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-gray-700 md:mt-4 md:gap-x-3" aria-label="Order benefits">
+          {%- for b in benefits -%}
+            {%- unless forloop.first %}<li aria-hidden="true" class="text-gray-500">/</li>{% endunless -%}
+            <li>{{ b | strip }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Latest arrival",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product", "info": "Leave empty to always show your newest product." },
+    { "type": "image_picker", "id": "image", "label": "Image (optional)", "info": "Defaults to the product's main image." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Latest arrival" },
+    { "type": "text", "id": "badge", "label": "Badge", "default": "New" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The warmest thing you'll never charge.", "info": "Leave empty to use the product title." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Zero-hassle and non-electronic: no batteries, no cords, nothing to break. Just heavyweight sherpa comfort for cozy holiday nights." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Claim Yours Now", "info": "The price is added automatically." },
+    { "type": "checkbox", "id": "link_to_product", "label": "Button opens the product page", "default": false, "info": "Off: scrolls to the buy box on this page." },
+    { "type": "text", "id": "benefits", "label": "Benefits (separate with |)", "default": "Free shipping today | 30-day returns | Secure checkout" },
+    { "type": "text", "id": "caption_right", "label": "Image caption (desktop)", "default": "Non-electronic" }
+  ],
+  "presets": [{ "name": "Latest arrival" }]
+}
+{% endschema %}

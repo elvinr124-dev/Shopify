@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="t">
+<title id="t">Close-up of reinforced twin-needle stitching and a bar-tacked seam where the sleeve meets the ribbed cuff</title>
+<defs>
+<pattern id="knit" width="22" height="18" patternUnits="userSpaceOnUse">
+<rect width="22" height="18" fill="#202020"/>
+<path d="M3,0 C6,7 8,12 11,18 M19,0 C16,7 14,12 11,18" fill="none" stroke="#000" stroke-opacity=".4" stroke-width="7" stroke-linecap="round" transform="translate(.8 1.5)"/>
+<path d="M3,0 C6,7 8,12 11,18 M19,0 C16,7 14,12 11,18" fill="none" stroke="#2f2f2f" stroke-width="5.5" stroke-linecap="round"/>
+<path d="M2.5,1 C5,6 6.5,9 8.5,13 M18.5,1 C16,6 14.6,9 12.6,13" fill="none" stroke="#3e3e3e" stroke-width="1.5" stroke-linecap="round"/>
+</pattern>
+<pattern id="rib" width="44" height="18" patternUnits="userSpaceOnUse">
+<rect width="44" height="18" fill="url(#knit)"/>
+<rect width="44" height="18" fill="url(#ribShade)"/>
+</pattern>
+<linearGradient id="ribShade" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#000" stop-opacity=".9"/><stop offset=".14" stop-color="#000" stop-opacity=".35"/><stop offset=".42" stop-color="#fff" stop-opacity=".1"/>
+<stop offset=".72" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity=".9"/>
+</linearGradient>
+<pattern id="twist" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+<rect width="7" height="7" fill="#cfcfcf"/><rect width="2.4" height="7" fill="#8f8f8f"/><rect x="2.4" width="1.2" height="7" fill="#f5f5f5"/>
+</pattern>
+<linearGradient id="thread" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5f5f5"/><stop offset=".55" stop-color="#bdbdbd"/><stop offset="1" stop-color="#737373"/></linearGradient>
+<linearGradient id="threadV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5f5f5"/><stop offset=".55" stop-color="#bdbdbd"/><stop offset="1" stop-color="#737373"/></linearGradient>
+<radialGradient id="key" cx=".3" cy=".25" r=".9">
+<stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity=".03"/><stop offset=".7" stop-color="#000" stop-opacity=".2"/><stop offset="1" stop-color="#000" stop-opacity=".75"/>
+</radialGradient>
+<linearGradient id="ridge" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".12"/><stop offset=".62" stop-color="#fff" stop-opacity=".2"/><stop offset=".8" stop-color="#000" stop-opacity=".4"/><stop offset="1" stop-color="#000" stop-opacity=".85"/>
+</linearGradient>
+<linearGradient id="vridge" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".35" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity=".6"/>
+</linearGradient>
+<filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="grainF" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="8" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.5 -.55"/></filter>
+<pattern id="grain" width="160" height="160" patternUnits="userSpaceOnUse"><rect width="160" height="160" filter="url(#grainF)"/></pattern>
+</defs>
+<rect width="1200" height="1200" fill="#111"/>
+<g transform="rotate(-9 600 600) translate(-160 -160) scale(1.27)">
+<rect x="0" y="0" width="1200" height="640" fill="url(#knit)"/>
+<path d="M120,-20 C180,200 230,380 300,560 M840,-20 C800,180 770,380 760,580" fill="none" stroke="#000" stroke-opacity=".45" stroke-width="70" filter="url(#soft)"/>
+<path d="M190,-20 C250,200 300,380 370,560 M930,-20 C890,180 860,380 850,580" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="50" filter="url(#soft)"/>
+<rect x="510" y="0" width="60" height="640" fill="url(#vridge)"/>
+<path d="M540,0 L540,640" stroke="#000" stroke-opacity=".7" stroke-width="5"/>
+<g fill="none" stroke-linecap="round">
+<path d="M492,-20 L492,560" stroke="#000" stroke-opacity=".75" stroke-width="12" stroke-dasharray="30 12" stroke-dashoffset="0" transform="translate(3 1.5)"/>
+<path d="M492,-20 L492,560" stroke="url(#twist)" stroke-width="9" stroke-dasharray="30 12" stroke-dashoffset="0"/>
+<path d="M492,-20 L492,560" stroke="#fff" stroke-opacity=".85" stroke-width="2.2" stroke-dasharray="18 24" stroke-dashoffset="-6" transform="translate(-2 0)"/><path d="M590,-20 L590,560" stroke="#000" stroke-opacity=".75" stroke-width="12" stroke-dasharray="30 12" stroke-dashoffset="14" transform="translate(3 1.5)"/>
+<path d="M590,-20 L590,560" stroke="url(#twist)" stroke-width="9" stroke-dasharray="30 12" stroke-dashoffset="14"/>
+<path d="M590,-20 L590,560" stroke="#fff" stroke-opacity=".85" stroke-width="2.2" stroke-dasharray="18 24" stroke-dashoffset="8" transform="translate(-2 0)"/>
+</g>
+<rect x="0" y="0" width="1200" height="1200" fill="url(#grain)" opacity=".1"/>
+<rect x="0" y="640" width="1200" height="560" fill="url(#rib)"/>
+<rect x="0" y="640" width="1200" height="560" fill="url(#key)" opacity=".5"/>
+<rect x="0" y="570" width="1200" height="90" fill="url(#ridge)"/>
+<path d="M0,662 L1200,662" stroke="#000" stroke-opacity=".8" stroke-width="26" filter="url(#soft)"/>
+<g fill="none" stroke-linecap="round">
+<path d="M-20,548 L1220,548" stroke="#000" stroke-opacity=".75" stroke-width="12" stroke-dasharray="30 12" stroke-dashoffset="0" transform="translate(1.5 3)"/>
+<path d="M-20,548 L1220,548" stroke="url(#twist)" stroke-width="9" stroke-dasharray="30 12" stroke-dashoffset="0"/>
+<path d="M-20,548 L1220,548" stroke="#fff" stroke-opacity=".85" stroke-width="2.2" stroke-dasharray="18 24" stroke-dashoffset="-6" transform="translate(0 -2)"/><path d="M-20,594 L1220,594" stroke="#000" stroke-opacity=".75" stroke-width="12" stroke-dasharray="30 12" stroke-dashoffset="17" transform="translate(1.5 3)"/>
+<path d="M-20,594 L1220,594" stroke="url(#twist)" stroke-width="9" stroke-dasharray="30 12" stroke-dashoffset="17"/>
+<path d="M-20,594 L1220,594" stroke="#fff" stroke-opacity=".85" stroke-width="2.2" stroke-dasharray="18 24" stroke-dashoffset="11" transform="translate(0 -2)"/>
+</g>
+<g fill="none" stroke-linecap="round">
+<rect x="486" y="558" width="112" height="52" rx="10" fill="#000" fill-opacity=".55" filter="url(#soft)"/>
+<path d="M494,566 L499,602 M497.6,566 L502.6,602 M501.2,566 L506.2,602 M504.8,566 L509.8,602 M508.4,566 L513.4,602 M512,566 L517,602 M515.6,566 L520.6,602 M519.2,566 L524.2,602 M522.8,566 L527.8,602 M526.4,566 L531.4,602 M530,566 L535,602 M533.6,566 L538.6,602 M537.2,566 L542.2,602 M540.8,566 L545.8,602 M544.4,566 L549.4,602 M548,566 L553,602 M551.6,566 L556.6,602 M555.2,566 L560.2,602 M558.8,566 L563.8,602 M562.4,566 L567.4,602 M566,566 L571,602 M569.6,566 L574.6,602 M573.2,566 L578.2,602 M576.8,566 L581.8,602 M580.4,566 L585.4,602 M584,566 L589,602 M587.6,566 L592.6,602 " stroke="#000" stroke-opacity=".8" stroke-width="5" transform="translate(1.5 3)"/>
+<path d="M494,566 L499,602 M497.6,566 L502.6,602 M501.2,566 L506.2,602 M504.8,566 L509.8,602 M508.4,566 L513.4,602 M512,566 L517,602 M515.6,566 L520.6,602 M519.2,566 L524.2,602 M522.8,566 L527.8,602 M526.4,566 L531.4,602 M530,566 L535,602 M533.6,566 L538.6,602 M537.2,566 L542.2,602 M540.8,566 L545.8,602 M544.4,566 L549.4,602 M548,566 L553,602 M551.6,566 L556.6,602 M555.2,566 L560.2,602 M558.8,566 L563.8,602 M562.4,566 L567.4,602 M566,566 L571,602 M569.6,566 L574.6,602 M573.2,566 L578.2,602 M576.8,566 L581.8,602 M580.4,566 L585.4,602 M584,566 L589,602 M587.6,566 L592.6,602 " stroke="#a8a8a8" stroke-width="3.4"/>
+<path d="M494,566 L499,602 M497.6,566 L502.6,602 M501.2,566 L506.2,602 M504.8,566 L509.8,602 M508.4,566 L513.4,602 M512,566 L517,602 M515.6,566 L520.6,602 M519.2,566 L524.2,602 M522.8,566 L527.8,602 M526.4,566 L531.4,602 M530,566 L535,602 M533.6,566 L538.6,602 M537.2,566 L542.2,602 M540.8,566 L545.8,602 M544.4,566 L549.4,602 M548,566 L553,602 M551.6,566 L556.6,602 M555.2,566 L560.2,602 M558.8,566 L563.8,602 M562.4,566 L567.4,602 M566,566 L571,602 M569.6,566 L574.6,602 M573.2,566 L578.2,602 M576.8,566 L581.8,602 M580.4,566 L585.4,602 M584,566 L589,602 M587.6,566 L592.6,602 " stroke="#fff" stroke-opacity=".55" stroke-width="1" transform="translate(-.6 -1)"/>
+</g>
+</g>
+<rect width="1200" height="1200" fill="url(#key)"/>
+</svg>

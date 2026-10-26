@@ -1,0 +1,10 @@
+<section class="mx-auto max-w-[28rem] px-4 py-16 sm:px-6">
+  <h1 class="type-display text-[clamp(2rem,7vw,3rem)]">Activate account</h1>
+  {%- form 'activate_customer_password', class: 'mt-8 space-y-4' -%}
+    {%- if form.errors -%}<div class="text-sm text-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div><label for="act-password" class="type-label block text-gray-600">Password</label><input id="act-password" type="password" name="customer[password]" autocomplete="new-password" required class="field mt-2 w-full"></div>
+    <div><label for="act-confirm" class="type-label block text-gray-600">Confirm password</label><input id="act-confirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required class="field mt-2 w-full"></div>
+    <button type="submit" class="btn-primary w-full">Activate account</button>
+    <button type="submit" name="decline" class="btn-secondary w-full">Decline invitation</button>
+  {%- endform -%}
+</section>

@@ -1,0 +1,39 @@
+{%- comment -%} Brand landing banner: who we are, with the latest arrival directly underneath {%- endcomment -%}
+<section id="top" class="landing relative border-b border-gray-200" aria-labelledby="landing-title-{{ section.id }}">
+  <div class="mx-auto grid max-w-[90rem] gap-4 px-4 pb-7 pt-7 sm:px-6 md:gap-5 md:py-12 lg:grid-cols-12 lg:items-end lg:gap-10 lg:px-10 lg:py-14">
+    <div class="lg:col-span-8">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label flex items-center gap-3 text-gray-700">
+          <span class="text-black">00</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>{{ section.settings.eyebrow }}
+        </p>
+      {%- endif -%}
+      <h1 id="landing-title-{{ section.id }}" class="type-display mt-3 text-balance text-[clamp(2.1rem,10.5vw,4.5rem)] md:mt-5 md:text-[min(7vw,5.5rem)] lg:text-[min(5.4vw,5.5rem)]">
+        {{ section.settings.heading }}
+      </h1>
+    </div>
+    <div class="lg:col-span-4 lg:pb-1">
+      {%- if section.settings.text != blank -%}
+        <p class="max-w-[30rem] text-[0.975rem] leading-relaxed text-gray-700 md:text-lg">{{ section.settings.text }}</p>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a href="#latest" class="group mt-3 inline-flex min-h-11 items-center gap-2 border-b border-black text-[0.8125rem] font-semibold uppercase tracking-[0.08em] md:mt-5">
+          {{ section.settings.link_label }}
+          <svg class="size-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing banner",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Welcome to Trending Arrivals" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's trending. Delivered." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "We find what everyone's talking about and ship it fast, at an honest price. Here's the latest arrival." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the latest arrival", "info": "Scrolls to the Latest arrival section." }
+  ],
+  "presets": [{ "name": "Landing banner" }]
+}
+{% endschema %}

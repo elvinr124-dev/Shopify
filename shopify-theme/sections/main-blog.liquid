@@ -1,0 +1,19 @@
+<section class="mx-auto max-w-[60rem] px-4 py-14 sm:px-6 md:py-20">
+  <h1 class="type-display text-[clamp(2rem,7vw,4rem)]">{{ blog.title }}</h1>
+  {%- paginate blog.articles by 12 -%}
+    <ul class="mt-10 divide-y divide-gray-200 border-y border-gray-200">
+      {%- for article in blog.articles -%}
+        <li class="py-6">
+          <p class="type-label text-gray-600">{{ article.published_at | date: '%B %d, %Y' }}</p>
+          <h2 class="mt-2 font-display text-xl font-bold uppercase [font-stretch:112%]"><a href="{{ article.url }}" class="hover:underline">{{ article.title }}</a></h2>
+          {%- if article.excerpt != blank -%}<div class="rte mt-2 text-gray-600">{{ article.excerpt }}</div>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

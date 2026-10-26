@@ -1,0 +1,13 @@
+{
+  "name": "trending-arrivals",
+  "private": true,
+  "description": "Trending Arrivals storefront: static landing page + Shopify theme",
+  "scripts": {
+    "build:theme": "./build-theme.sh",
+    "build:zip": "./build-zip.sh"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}

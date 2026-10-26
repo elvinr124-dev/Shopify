@@ -1,0 +1,45 @@
+/* Tailwind source for the Shopify theme. Build with ./build-theme.sh (outputs shopify-theme/assets/tailwind.css). */
+@import "tailwindcss";
+@source "../shopify-theme";
+
+@theme {
+  /* Strict monochrome palette: default colours are removed so nothing off-brand can slip in */
+  --color-*: initial;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-charcoal: #1A1A1A;
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #E5E5E5;
+  --color-gray-300: #D4D4D4;
+  --color-gray-400: #A3A3A3; /* muted text on black only */
+  --color-gray-500: #737373; /* large text / UI borders */
+  --color-gray-600: #525252; /* muted body text on white */
+  --color-gray-700: #3A3A3A;
+  --color-gray-800: #2A2A2A;
+  --color-gray-900: #111111;
+  --color-error: #D92D20;    /* form validation only */
+
+  --font-display: "Archivo", "Inter Display", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Display type: oversized, tight, expanded caps */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 118%;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+}
+/* Editorial label: mono caps with wide tracking */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}

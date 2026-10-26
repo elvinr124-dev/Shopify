@@ -1,0 +1,22 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your gift card | {{ shop.name }}</title>
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body style="background:#fff;color:#000;font-family:Inter,system-ui,sans-serif;">
+  <main style="max-width:32rem;margin:0 auto;padding:4rem 1rem;text-align:center;">
+    <img src="{{ 'logo.svg' | asset_url }}" width="965" height="434" alt="{{ shop.name | escape }}" style="width:12rem;height:auto;">
+    <h1 style="margin-top:2rem;font-size:2rem;font-weight:800;text-transform:uppercase;">Your gift card</h1>
+    <p style="margin-top:1rem;font-size:1.5rem;font-weight:700;">{{ gift_card.balance | money }}</p>
+    {%- if gift_card.enabled == false or gift_card.expired -%}<p style="margin-top:.5rem;color:#525252;">This gift card is no longer active.</p>{%- endif -%}
+    <p style="margin-top:1.5rem;font-family:monospace;font-size:1.25rem;letter-spacing:.1em;border:1px solid #000;padding:1rem;">{{ gift_card.code | format_code }}</p>
+    {%- if gift_card.expires_on -%}<p style="margin-top:.75rem;color:#525252;">Expires {{ gift_card.expires_on | date: '%B %d, %Y' }}</p>{%- endif -%}
+    <a href="{{ shop.url }}" style="display:inline-block;margin-top:2rem;background:#000;color:#fff;padding:1rem 2rem;font-weight:700;text-decoration:none;">Start shopping</a>
+  </main>
+</body>
+</html>

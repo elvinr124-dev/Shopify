@@ -1,0 +1,22 @@
+<section class="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 md:py-20 lg:px-10">
+  <h1 class="type-display text-[clamp(2rem,7vw,4.5rem)]">{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}
+    <div class="rte mt-4 max-w-2xl text-gray-600">{{ collection.description }}</div>
+  {%- endif -%}
+  {%- paginate collection.products by 24 -%}
+    {%- if collection.products.size > 0 -%}
+      <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+        {%- for item in collection.products -%}
+          <li>{% render 'product-card', card_product: item %}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="mt-10 text-gray-600">No products here yet.</p>
+    {%- endif -%}
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

@@ -1,0 +1,292 @@
+{%- comment -%}
+  Buy box. On a product page it shows that product; on the home page it shows the product picked
+  in the theme editor, or the newest product in the store.
+{%- endcomment -%}
+{%- liquid
+  assign p = product
+  if p == blank
+    assign p = section.settings.product
+  endif
+  if p == blank
+    assign p = collections.all.products | sort: 'created_at' | last
+  endif
+  assign current_variant = p.selected_or_first_available_variant
+  assign form_id = 'product-form-' | append: section.id
+  if request.page_type == 'product'
+    assign title_tag = 'h1'
+  else
+    assign title_tag = 'h2'
+  endif
+  assign featured = current_variant.featured_media | default: p.featured_media
+  assign max_qty = section.settings.max_qty
+  assign swatch_lines = settings.swatch_colors | newline_to_br | split: '<br />'
+-%}
+
+<section id="buy" class="border-b border-gray-200" aria-labelledby="buy-title-{{ section.id }}" data-product-section data-section-id="{{ section.id }}" data-update-url="{% if request.page_type == 'product' %}true{% else %}false{% endif %}">
+  {%- if p == blank -%}
+    <div class="mx-auto max-w-[90rem] px-4 py-20 text-center sm:px-6 lg:px-10">
+      <h2 id="buy-title-{{ section.id }}" class="type-display text-[clamp(1.9rem,6vw,3rem)]">Add your first product</h2>
+      <p class="mx-auto mt-4 max-w-md text-gray-600">In Shopify admin, go to Products &rarr; Add product. It will appear here automatically.</p>
+    </div>
+  {%- else -%}
+  <div class="buy-grid mx-auto grid max-w-[90rem] gap-6 px-4 py-14 sm:px-6 md:grid-cols-12 md:grid-rows-[auto_1fr] md:gap-x-8 md:gap-y-0 md:py-20 lg:gap-x-12 lg:px-10 lg:py-24">
+    {%- comment -%} Name + price (first on phones so a tap on "Claim Yours" lands on the offer) {%- endcomment -%}
+    <div class="md:col-span-6 md:col-start-7 md:row-start-1 lg:col-span-5 lg:col-start-8">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="type-label flex items-center gap-4 text-gray-600">
+          <span class="text-black">{{ section.settings.number }}</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>{{ section.settings.eyebrow }}</span>
+        </div>
+      {%- endif -%}
+      <{{ title_tag }} id="buy-title-{{ section.id }}" class="type-display mt-5 text-balance text-[clamp(1.9rem,8vw,3.5rem)] md:mt-6 md:text-[clamp(1.9rem,4.4vw,3.5rem)]">{{ p.title }}</{{ title_tag }}>
+      <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 md:mt-5">
+        <p class="font-display text-[2.25rem] font-extrabold leading-none text-black [font-stretch:112%] md:text-[2.5rem]"><span class="sr-only">Price: </span><span data-price>{{ current_variant.price | money }}</span></p>
+        <p class="flex items-center gap-2" data-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>
+          <span class="sr-only">Regular price: </span><s class="text-lg text-gray-600" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
+          <span class="type-label bg-black px-2 py-1 text-white" data-save>
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+              Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%
+            {%- endif -%}
+          </span>
+        </p>
+        {%- if section.settings.price_note != blank -%}
+          <p class="type-label text-gray-700">{{ section.settings.price_note }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Gallery {%- endcomment -%}
+    <div class="md:col-span-6 md:col-start-1 md:row-span-2 md:row-start-1 lg:col-span-7">
+      <div class="gallery md:sticky md:top-[calc(var(--header-h)+1.5rem)]{% if p.media.size > 1 %} lg:grid lg:grid-cols-[5rem_minmax(0,1fr)] lg:items-start lg:gap-3{% endif %}">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          {%- if featured != blank -%}
+            {%- assign main_alt = featured.alt | default: p.title -%}
+            {{ featured.preview_image | image_url: width: 1500 | image_tag: widths: '400, 600, 800, 1000, 1200, 1500', sizes: '(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw', loading: 'lazy', class: 'gallery__main size-full object-cover', alt: main_alt }}
+          {%- else -%}
+            <img src="{{ 'product-onyx.svg' | asset_url }}" width="1200" height="1200" loading="lazy" decoding="async" alt="{{ p.title | escape }}" class="gallery__main size-full object-cover" data-gallery-main>
+          {%- endif -%}
+          {%- if p.media.size > 1 -%}
+            <span class="gallery__count type-label absolute bottom-3 left-3 bg-white px-2 py-1 text-black" aria-hidden="true"><span data-gallery-index>01</span> / {% if p.media.size < 10 %}0{% endif %}{{ p.media.size }}</span>
+          {%- endif -%}
+        </div>
+        {%- if p.media.size > 1 -%}
+          <ul class="mt-2 grid grid-cols-5 gap-1 min-[360px]:gap-2 sm:grid-cols-6 lg:order-first lg:mt-0 lg:grid-cols-1 lg:content-start lg:gap-2" aria-label="Product images">
+            {%- for media in p.media -%}
+              {%- liquid
+                assign img = media.preview_image
+                assign thumb_alt = media.alt | default: p.title
+                capture srcset
+                  echo img | image_url: width: 600
+                  echo ' 600w, '
+                  echo img | image_url: width: 1000
+                  echo ' 1000w, '
+                  echo img | image_url: width: 1500
+                  echo ' 1500w'
+                endcapture
+              -%}
+              <li>
+                <button type="button" class="thumb" data-thumb data-media-id="{{ media.id }}" data-src="{{ img | image_url: width: 1500 }}" data-srcset="{{ srcset | strip }}" data-alt="{{ thumb_alt | escape }}" aria-label="Show image {{ forloop.index }}: {{ thumb_alt | escape }}" aria-current="{% if media.id == featured.id %}true{% else %}false{% endif %}">
+                  {{ img | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Options + purchase {%- endcomment -%}
+    <div class="md:col-span-6 md:col-start-7 md:row-start-2 md:mt-6 lg:col-span-5 lg:col-start-8">
+      {%- if section.settings.bullets != blank -%}
+        {%- assign bullets = section.settings.bullets | newline_to_br | split: '<br />' -%}
+        <ul class="space-y-2.5 text-[0.9375rem] leading-snug text-gray-700">
+          {%- for bullet in bullets -%}
+            {%- assign bullet_text = bullet | strip -%}
+            {%- if bullet_text != blank -%}
+              <li class="flex gap-3"><svg class="mt-0.5 size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>{{ bullet_text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- form 'product', p, id: form_id, class: 'mt-8 space-y-6 border-t border-gray-200 pt-6', novalidate: 'novalidate', data-product-form: '' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+        {%- unless p.has_only_default_variant -%}
+          {%- for option in p.options_with_values -%}
+            {%- assign option_name = option.name | downcase -%}
+            {%- if option_name contains 'color' or option_name contains 'colour' -%}
+              <fieldset data-option-index="{{ forloop.index0 }}" data-option-type="swatch">
+                <legend class="type-label text-gray-600">{{ option.name }}: <span class="text-black" data-option-selected>{{ option.selected_value }}</span></legend>
+                <div class="mt-3 grid grid-cols-3 gap-2">
+                  {%- for value in option.values -%}
+                    {%- liquid
+                      assign swatch = ''
+                      assign value_key = value | downcase | strip
+                      for line in swatch_lines
+                        assign pair = line | split: ':'
+                        assign pair_key = pair.first | downcase | strip
+                        if pair_key == value_key
+                          assign swatch = pair.last | strip
+                        endif
+                      endfor
+                      if swatch == blank and value.swatch.color
+                        assign swatch = value.swatch.color
+                      endif
+                      if swatch == blank
+                        assign swatch = value_key
+                      endif
+                    -%}
+                    <label class="swatch">
+                      <input type="radio" name="{{ section.id }}-option-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" class="swatch__input"{% if option.selected_value == value %} checked{% endif %}>
+                      <span class="swatch__box"><span class="swatch__dot" style="--swatch: {{ swatch }}"></span><span class="swatch__name">{{ value }}</span></span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+            {%- else -%}
+              <div data-option-index="{{ forloop.index0 }}" data-option-type="select">
+                <label for="{{ section.id }}-option-{{ forloop.index0 }}" class="type-label block text-gray-600">{{ option.name }}</label>
+                <div class="select-wrap mt-3">
+                  <select id="{{ section.id }}-option-{{ forloop.index0 }}" class="field">
+                    {%- for value in option.values -%}
+                      <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                    {%- endfor -%}
+                  </select>
+                  <svg class="select-wrap__icon size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
+
+        {%- comment -%} Quantity + live total {%- endcomment -%}
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <label for="{{ section.id }}-qty" class="type-label block text-gray-600" id="{{ section.id }}-qty-label">Quantity</label>
+            <div class="stepper mt-3" role="group" aria-labelledby="{{ section.id }}-qty-label">
+              <button type="button" class="stepper__btn" data-qty-dec aria-label="Decrease quantity" aria-disabled="true">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg>
+              </button>
+              <input id="{{ section.id }}-qty" name="quantity" type="number" class="stepper__input" inputmode="numeric" min="1" max="{{ max_qty }}" step="1" value="1" data-qty>
+              <button type="button" class="stepper__btn" data-qty-inc aria-label="Increase quantity">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+          <p class="text-right" aria-live="polite" aria-atomic="true">
+            <span class="type-label block text-gray-600">Total</span>
+            <span class="mt-1 block font-display text-2xl font-extrabold leading-none [font-stretch:112%]" data-buy-total>{{ current_variant.price | money }}</span>
+          </p>
+        </div>
+
+        {%- comment -%} CTAs {%- endcomment -%}
+        <div class="space-y-3">
+          <button type="submit" class="btn-primary w-full" data-buy-now data-label="{{ section.settings.buy_now_label | escape }}"{% unless current_variant.available %} disabled{% endunless %}>
+            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            <span data-buy-now-label>{% if current_variant.available %}{{ section.settings.buy_now_label }} &mdash; <span data-buy-total>{{ current_variant.price | money }}</span>{% else %}Sold out{% endif %}</span>
+          </button>
+          <button type="submit" name="add" class="btn-secondary w-full" data-add-to-cart data-label="{{ section.settings.add_label | escape }}"{% unless current_variant.available %} disabled{% endunless %}>{% if current_variant.available %}{{ section.settings.add_label }}{% else %}Sold out{% endif %}</button>
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        </div>
+        <p class="hidden text-[0.875rem] text-error" role="alert" data-form-error></p>
+      {%- endform -%}
+
+      {%- comment -%} Reassurance stack {%- endcomment -%}
+      <div class="mt-5 space-y-4">
+        {%- if section.settings.show_countdown -%}
+          <p class="countdown flex items-center gap-2.5 text-[0.9375rem] text-gray-700" data-countdown>
+            <span class="live-dot" aria-hidden="true"></span>
+            <span data-countdown-fallback>{{ section.settings.countdown_fallback }}</span>
+            <span data-countdown-live hidden>Order in <span class="font-mono font-medium tabular-nums text-black" role="timer" data-countdown-time>00:00:00</span> {{ section.settings.countdown_suffix }}</span>
+          </p>
+        {%- endif -%}
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          <ul class="payment-icons flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
+            {%- for type in shop.enabled_payment_types -%}
+              <li>{{ type | payment_type_svg_tag: class: 'h-6 w-auto' }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        <ul class="divide-y divide-gray-200 border-y border-gray-200 text-[0.875rem] text-gray-700">
+          {%- if section.settings.guarantee != blank -%}
+            <li class="flex items-center gap-3 py-3">
+              <svg class="size-5 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.3 7.5 9.5 4.3-1.2 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.4-4.6"/></svg>
+              <span>{{ section.settings.guarantee }}</span>
+            </li>
+          {%- endif -%}
+          <li class="flex items-center gap-3 py-3">
+            <svg class="size-5 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            <span><strong class="font-semibold text-black">SSL-encrypted secure checkout.</strong> Powered by Shopify.</span>
+          </li>
+        </ul>
+      </div>
+
+      {%- comment -%} Accordions {%- endcomment -%}
+      <div class="accordion mt-6 border-b border-gray-200">
+        {%- if p.description != blank -%}
+          <details class="acc" name="product-info-{{ section.id }}">
+            <summary>Details &amp; Materials</summary>
+            <div class="acc__body rte">{{ p.description }}</div>
+          </details>
+        {%- endif -%}
+        {%- if section.settings.shipping_text != blank -%}
+          <details class="acc" name="product-info-{{ section.id }}">
+            <summary>Shipping &amp; Returns</summary>
+            <div class="acc__body rte">{{ section.settings.shipping_text }}</div>
+          </details>
+        {%- endif -%}
+        {%- if section.settings.care_text != blank -%}
+          <details class="acc" name="product-info-{{ section.id }}">
+            <summary>Care</summary>
+            <div class="acc__body rte">{{ section.settings.care_text }}</div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Mobile sticky buy bar {%- endcomment -%}
+  <aside class="sticky-buy" id="sticky-buy" aria-label="Quick buy" data-visible="false" aria-hidden="true" inert>
+    <div class="flex items-center gap-3 px-4 py-3">
+      {%- if featured != blank -%}
+        {{ featured.preview_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', class: 'sticky-buy__thumb size-11 shrink-0 bg-gray-100 object-cover' }}
+      {%- endif -%}
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-sm font-semibold">{{ p.title }}</p>
+        <p class="truncate text-[0.8125rem] text-gray-700"><span class="font-semibold text-black" data-price>{{ current_variant.price | money }}</span>{% if section.settings.sticky_note != blank %} &middot; {{ section.settings.sticky_note }}{% endif %}</p>
+      </div>
+      <a href="#buy" class="btn-primary btn-primary--sm shrink-0" data-sticky-cta>{{ section.settings.sticky_label }}</a>
+    </div>
+  </aside>
+
+  <script type="application/json" data-product-json>{{ p | json }}</script>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Buy box",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product (home page only)", "info": "Product pages always show their own product. Leave empty to show your newest product." },
+    { "type": "text", "id": "number", "label": "Section number", "default": "04" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The drop" },
+    { "type": "text", "id": "price_note", "label": "Note next to the price", "default": "Free shipping today" },
+    { "type": "textarea", "id": "bullets", "label": "Benefit bullets (one per line)", "default": "Heavyweight sherpa lining that holds heat for hours\nNon-electronic: no batteries, cords or charging, ever\nOversized wearable-blanket cut with a deep front pocket\nReinforced double stitching on every seam and cuff" },
+    { "type": "range", "id": "max_qty", "label": "Max quantity per order", "min": 1, "max": 20, "step": 1, "default": 10 },
+    { "type": "text", "id": "buy_now_label", "label": "Buy now button label", "default": "Buy Now" },
+    { "type": "text", "id": "add_label", "label": "Add to cart button label", "default": "Add to Cart" },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show express checkout buttons (Shop Pay, Apple Pay...)", "default": false },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show free-shipping countdown to midnight", "default": true },
+    { "type": "text", "id": "countdown_suffix", "label": "Countdown text", "default": "for free shipping today" },
+    { "type": "text", "id": "countdown_fallback", "label": "Text before the countdown loads", "default": "Order today for free shipping." },
+    { "type": "text", "id": "guarantee", "label": "Guarantee line", "default": "30-day zero-risk returns. Love it or get your money back." },
+    { "type": "richtext", "id": "shipping_text", "label": "Shipping & returns", "default": "<p>Free shipping on orders placed today. Every order ships within 24 hours with tracking sent to your inbox.</p><p>30-day zero-risk returns: if it isn't right, contact support within 30 days of delivery for a full refund.</p>" },
+    { "type": "richtext", "id": "care_text", "label": "Care", "default": "<p>Machine wash cold, inside out, on a gentle cycle. Tumble dry low or hang dry. Do not bleach or iron.</p>" },
+    { "type": "text", "id": "sticky_label", "label": "Mobile sticky bar button", "default": "Claim Yours" },
+    { "type": "text", "id": "sticky_note", "label": "Mobile sticky bar note", "default": "Free shipping today" }
+  ],
+  "presets": [{ "name": "Buy box" }]
+}
+{% endschema %}

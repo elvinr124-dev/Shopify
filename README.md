@@ -1,7 +1,33 @@
 # Trending Arrivals: single-product landing page
 
 A mobile-first, high-converting one-product store page with a white theme (black text, buttons and accents), built for traffic from short-form video.
-Plain HTML + Tailwind CSS (CDN) + vanilla JavaScript. No build step.
+It comes in two forms: a **Shopify theme** (upload to Shopify) and a **plain website** (HTML + Tailwind CSS CDN + vanilla JavaScript, no build step).
+
+## Shopify theme (upload this one to Shopify)
+
+`dist/trending-arrivals-shopify-theme.zip` is a complete Shopify Online Store 2.0 theme built from this design. It uses your real Shopify products, cart and checkout.
+
+**Install:** Shopify admin → **Online Store → Themes → Add theme → Upload zip file** → choose `trending-arrivals-shopify-theme.zip` → **Customize** (to preview) → **Publish**.
+
+**How it works:**
+- **Home page:** landing banner, then the **Latest arrival** spotlight, then trust badges, highlights, the buy box, FAQ and a final call to action.
+- **Latest product:** the spotlight and buy box automatically show your **newest product**. To pin a specific one, open Customize and pick it in the *Latest arrival* and *Buy box* sections.
+- **Variants:** come straight from Shopify. Options named *Color* or *Colour* show as swatches; any other option shows as a dropdown.
+  - Set swatch colors under *Theme settings → Color swatches*, one per line, e.g. `Onyx: #000000`.
+- **Buttons and checkout:** **Add to Cart** opens the slide-out cart. **Buy Now** goes straight to Shopify's secure checkout. The demo checkout from the plain website is not in the theme.
+- **Footer:** links to your Shopify policies under *Settings → Policies*.
+- **Editing:** all text (announcement bar, headlines, FAQ, trust badges, bullets) can be changed in **Customize**, with no code.
+- **Express checkout:** Shop Pay / Apple Pay buttons can be turned on in the *Buy box* section.
+
+**Theme files** live in `shopify-theme/`. Tailwind is precompiled into `shopify-theme/assets/tailwind.css`, so pages load fast with no runtime script. If you add new Tailwind classes to the theme code, rebuild:
+
+```sh
+./build-theme.sh   # recompiles Tailwind and creates dist/trending-arrivals-shopify-theme.zip
+```
+
+## Plain website version
+
+`dist/trending-arrivals.zip` is the standalone HTML/CSS/JS version of the page, for any static host. It is **not** a Shopify theme. Its file layout:
 
 ```
 index.html      the whole page (header, hero, trust badges, highlights, buy box, FAQ, footer, cart, checkout)

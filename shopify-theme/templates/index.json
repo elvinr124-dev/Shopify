@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "landing": {
+      "type": "landing",
+      "settings": {}
+    },
+    "latest": {
+      "type": "latest-arrival",
+      "settings": {}
+    },
+    "marquee": {
+      "type": "trust-marquee",
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure Checkout",
+            "text": "SSL-encrypted from your first click to your final payment."
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "support",
+            "title": "24/7 Support",
+            "text": "Real people, any hour. Email us and we'll sort it out."
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Holiday Fulfillment",
+            "text": "Every order ships within 24 hours, and shipping is free today."
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3"
+      ],
+      "settings": {}
+    },
+    "highlights": {
+      "type": "highlights",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "style": "image",
+            "fallback_image": "detail-sherpa.svg",
+            "label": "01 / Materials",
+            "title": "High-Grade Materials",
+            "text": "A heavyweight shell over thick, plush sherpa that traps your own body heat. Warm the second it's on. No warm-up, no settings."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "style": "number",
+            "big_label": "Money-back guarantee",
+            "big_number": "30",
+            "big_caption": "Day zero-risk returns",
+            "label": "02 / Guarantee",
+            "title": "Zero-Return Risk",
+            "text": "Wear it for 30 days. If it's not the coziest thing you own, send it back for a full refund. Your money is never stuck."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "style": "image",
+            "fallback_image": "detail-stitching.svg",
+            "label": "03 / Construction",
+            "title": "Premium Stitching",
+            "text": "Reinforced double-stitched seams and cuffs, built for daily wear, couch marathons and wash after wash."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {}
+    },
+    "unplugged": {
+      "type": "unplugged",
+      "settings": {}
+    },
+    "buy": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How fast will it ship?",
+            "answer": "<p>Every order ships within 24 hours, and shipping is free on orders placed today. You'll get a tracking link by email the moment it leaves us.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't fit or I don't love it?",
+            "answer": "<p>You're covered by 30-day zero-risk returns. Email support within 30 days of delivery and we'll walk you through the return and refund your money in full.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Which size should I choose?",
+            "answer": "<p>Standard fits most people who wear S to L; Oversized fits XL to 3XL. Both are cut generously, so if you're between sizes, Standard gives a relaxed drape and Oversized gives the full wearable-blanket feel.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "How do I wash it?",
+            "answer": "<p>Machine wash cold, inside out, on gentle. Tumble dry low or hang dry. Skip bleach and irons.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Checkout runs on Shopify's SSL-encrypted, PCI-compliant checkout, and card details are never stored by us.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Does it need power, batteries or charging?",
+            "answer": "<p>No. Nothing to plug in, charge or replace. The warmth comes from dense, heavyweight sherpa that traps your own body heat.</p>"
+          }
+        },
+        "question_7": {
+          "type": "question",
+          "settings": {
+            "question": "Is it a good holiday gift?",
+            "answer": "<p>It's one of the easiest: the roomy fit takes the guesswork out of sizing, it ships within 24 hours, and the 30-day return window has their back if anything's off.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6",
+        "question_7"
+      ],
+      "settings": {}
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "landing",
+    "latest",
+    "marquee",
+    "trust",
+    "highlights",
+    "unplugged",
+    "buy",
+    "faq",
+    "final_cta"
+  ]
+}

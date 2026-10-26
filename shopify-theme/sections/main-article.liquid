@@ -1,0 +1,13 @@
+<article class="mx-auto max-w-[48rem] px-4 py-14 sm:px-6 md:py-20">
+  <p class="type-label text-gray-600">{{ article.published_at | date: '%B %d, %Y' }}</p>
+  <h1 class="type-display mt-3 text-[clamp(2rem,7vw,4rem)]">{{ article.title }}</h1>
+  {%- if article.image != blank -%}
+    <div class="mt-8">{{ article.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 768px) 48rem, 100vw', class: 'w-full h-auto' }}</div>
+  {%- endif -%}
+  <div class="rte mt-8 text-gray-700">{{ article.content }}</div>
+  <a href="{{ blog.url }}" class="link mt-10 inline-block">Back to {{ blog.title }}</a>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

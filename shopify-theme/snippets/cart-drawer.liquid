@@ -1,0 +1,71 @@
+{%- comment -%}
+  Slide-over cart. Lines are rendered by theme.js from Shopify's Ajax Cart API (/cart.js);
+  checkout submits to Shopify's secure checkout.
+{%- endcomment -%}
+<dialog id="cart-drawer" class="modal drawer" aria-labelledby="cart-title">
+  <div class="flex h-full flex-col">
+    <div class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 pl-5 pr-2">
+      <h2 id="cart-title" class="font-display text-lg font-extrabold uppercase [font-stretch:118%]">Your cart <span class="text-gray-600" data-cart-count-text>({{ cart.item_count }})</span></h2>
+      <button type="button" class="icon-btn" data-modal-close aria-label="Close cart">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    {%- if settings.cart_notice != blank -%}
+      <p class="flex shrink-0 items-center gap-2 border-b border-gray-200 bg-gray-100 px-5 py-3 text-[0.8125rem] text-gray-700">
+        <svg class="size-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>
+        <span>{{ settings.cart_notice }}</span>
+      </p>
+    {%- endif -%}
+    <div class="sr-only" aria-live="polite" aria-atomic="true" data-live></div>
+
+    <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <ul class="divide-y divide-gray-200 px-5" data-cart-lines></ul>
+      <div class="flex h-full flex-col items-center justify-center gap-5 px-6 py-16 text-center" data-cart-empty hidden>
+        <svg class="size-10 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12.5H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <p class="font-display text-xl font-extrabold uppercase [font-stretch:118%]">Your cart is empty</p>
+        <a href="{{ routes.root_url }}#buy" class="btn-primary" data-shop-now>Shop the latest arrival</a>
+      </div>
+    </div>
+
+    <form action="{{ routes.cart_url }}" method="post" class="shrink-0 border-t border-gray-200 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5" data-cart-footer>
+      <dl class="space-y-2 text-[0.9375rem]">
+        <div class="flex justify-between border-gray-200 text-lg font-semibold"><dt>Subtotal</dt><dd data-cart-subtotal>{{ cart.total_price | money }}</dd></div>
+      </dl>
+      <p class="mt-1 text-[0.8125rem] text-gray-600">Taxes and shipping calculated at checkout.</p>
+      <button type="submit" name="checkout" class="btn-primary mt-4 w-full">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+        <span>Secure Checkout &mdash; <span data-cart-subtotal>{{ cart.total_price | money }}</span></span>
+      </button>
+      <p class="mt-3 text-center text-[0.8125rem] text-gray-600">SSL-encrypted checkout powered by Shopify</p>
+    </form>
+  </div>
+</dialog>
+
+<template id="tpl-cart-line">
+  <li class="flex gap-4 py-5" data-line>
+    <a href="#" class="block shrink-0" data-line-link tabindex="-1" aria-hidden="true"><img width="160" height="160" alt="" class="size-20 bg-gray-100 object-cover" data-line-img></a>
+    <div class="flex min-w-0 flex-1 flex-col gap-3">
+      <div class="flex items-start justify-between gap-3">
+        <div class="min-w-0">
+          <p class="text-[0.9375rem] font-semibold leading-snug" data-line-name></p>
+          <p class="mt-0.5 text-[0.8125rem] text-gray-600" data-line-variant></p>
+        </div>
+        <p class="shrink-0 text-[0.9375rem] font-semibold" data-line-total></p>
+      </div>
+      <div class="flex items-center justify-between gap-3">
+        <div class="stepper stepper--sm" role="group" data-line-group>
+          <button type="button" class="stepper__btn" data-line-dec>
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg>
+          </button>
+          <input type="number" class="stepper__input" inputmode="numeric" min="1" step="1" data-line-qty>
+          <button type="button" class="stepper__btn" data-line-inc>
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <button type="button" class="text-btn" data-line-remove>Remove</button>
+      </div>
+    </div>
+  </li>
+</template>
+
+<script type="application/json" id="cart-json">{{ cart | json }}</script>

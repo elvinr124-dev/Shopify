@@ -1,0 +1,19 @@
+{%- comment -%} Product card for collection and search grids. Accepts: card_product {%- endcomment -%}
+<a href="{{ card_product.url }}" class="group block">
+  <div class="aspect-square overflow-hidden bg-gray-100">
+    {%- if card_product.featured_media != blank -%}
+      {%- assign card_alt = card_product.featured_media.alt | default: card_product.title -%}
+      {{ card_product.featured_media.preview_image | image_url: width: 800 | image_tag: widths: '300, 400, 600, 800', sizes: '(min-width: 1024px) 25vw, 50vw', loading: 'lazy', class: 'size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]', alt: card_alt }}
+    {%- else -%}
+      <img src="{{ 'product-onyx.svg' | asset_url }}" width="1200" height="1200" loading="lazy" alt="{{ card_product.title | escape }}" class="size-full object-cover">
+    {%- endif -%}
+  </div>
+  <div class="mt-3 flex items-start justify-between gap-3">
+    <h3 class="text-[0.9375rem] font-semibold leading-snug group-hover:underline">{{ card_product.title }}</h3>
+    <p class="shrink-0 text-[0.9375rem]">
+      {%- if card_product.price_varies %}From {% endif -%}
+      {{ card_product.price | money }}
+    </p>
+  </div>
+  {%- unless card_product.available -%}<p class="type-label mt-1 text-gray-600">Sold out</p>{%- endunless -%}
+</a>

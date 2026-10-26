@@ -1,0 +1,53 @@
+{%- liquid
+  assign support_email = settings.support_email | default: shop.email
+  assign privacy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
+  assign terms_url = shop.terms_of_service.url | default: '/policies/terms-of-service'
+  assign shipping_url = shop.shipping_policy.url | default: '/policies/shipping-policy'
+  assign refund_url = shop.refund_policy.url | default: '/policies/refund-policy'
+-%}
+<footer class="site-footer border-t border-gray-200 bg-white">
+  <div class="mx-auto max-w-[90rem] px-4 pt-14 sm:px-6 lg:px-10">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <img src="{{ 'logo.svg' | asset_url }}" width="965" height="434" loading="lazy" decoding="async" alt="{{ shop.name | escape }}" class="h-auto w-44">
+        {%- if section.settings.tagline != blank -%}
+          <p class="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-gray-600">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+      </div>
+      <nav class="md:col-span-7" aria-label="Legal and support">
+        <ul class="grid grid-cols-2 gap-x-6 sm:grid-cols-3">
+          <li><a class="footer-link" href="{{ privacy_url }}">Privacy Policy</a></li>
+          <li><a class="footer-link" href="{{ terms_url }}">Terms of Service</a></li>
+          <li><a class="footer-link" href="{{ shipping_url }}">Shipping Policy</a></li>
+          <li><a class="footer-link" href="{{ refund_url }}">Refund Policy</a></li>
+          {%- if support_email != blank -%}
+            <li><a class="footer-link" href="mailto:{{ support_email }}">Support</a></li>
+          {%- endif -%}
+          {%- for link in section.settings.menu.links -%}
+            <li><a class="footer-link" href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+    <svg class="footer-wordmark mt-14 select-none" viewBox="0 0 1000 118" aria-hidden="true" focusable="false">
+      <text x="0" y="108" textLength="1000" lengthAdjust="spacingAndGlyphs">{{ shop.name | upcase | escape }}</text>
+    </svg>
+    <div class="flex flex-col gap-2 border-t border-gray-200 py-6 text-[0.8125rem] text-gray-600 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.</p>
+      <p>
+        Prices in {{ cart.currency.iso_code }}
+        {%- if support_email != blank %} &middot; <a class="link" href="mailto:{{ support_email }}">{{ support_email }}</a>{% endif -%}
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "One trending piece at a time, honestly priced and shipped fast." },
+    { "type": "link_list", "id": "menu", "label": "Extra links (optional)" }
+  ]
+}
+{% endschema %}

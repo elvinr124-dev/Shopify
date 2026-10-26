@@ -1,0 +1,26 @@
+<section class="mx-auto max-w-[60rem] px-4 py-16 sm:px-6">
+  <a class="link" href="{{ routes.account_url }}">Back to account</a>
+  <h1 class="type-display mt-6 text-[clamp(2rem,7vw,3rem)]">Order {{ order.name }}</h1>
+  <p class="mt-2 text-gray-600">Placed {{ order.created_at | date: '%B %d, %Y' }}</p>
+  {%- if order.cancelled -%}<p class="mt-2 text-error">Cancelled {{ order.cancelled_at | date: '%B %d, %Y' }}</p>{%- endif -%}
+  <ul class="mt-8 divide-y divide-gray-200 border-y border-gray-200">
+    {%- for line_item in order.line_items -%}
+      <li class="flex justify-between gap-4 py-4">
+        <span>{{ line_item.title }} &times; {{ line_item.quantity }}</span>
+        <span class="font-semibold">{{ line_item.final_line_price | money }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+  <dl class="mt-6 space-y-2">
+    <div class="flex justify-between"><dt class="text-gray-600">Subtotal</dt><dd>{{ order.line_items_subtotal_price | money }}</dd></div>
+    {%- for shipping_method in order.shipping_methods -%}
+      <div class="flex justify-between"><dt class="text-gray-600">Shipping ({{ shipping_method.title }})</dt><dd>{{ shipping_method.price | money }}</dd></div>
+    {%- endfor -%}
+    <div class="flex justify-between"><dt class="text-gray-600">Tax</dt><dd>{{ order.tax_price | money }}</dd></div>
+    <div class="flex justify-between border-t border-gray-200 pt-2 text-lg font-semibold"><dt>Total</dt><dd>{{ order.total_price | money }}</dd></div>
+  </dl>
+  <div class="mt-10 grid gap-8 sm:grid-cols-2">
+    <div><h2 class="type-label text-gray-600">Shipping address</h2><div class="mt-2">{{ order.shipping_address | format_address }}</div></div>
+    <div><h2 class="type-label text-gray-600">Billing address</h2><div class="mt-2">{{ order.billing_address | format_address }}</div></div>
+  </div>
+</section>

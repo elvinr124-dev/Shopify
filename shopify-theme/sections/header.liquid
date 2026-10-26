@@ -1,0 +1,54 @@
+{%- comment -%} Sticky header: announcement / trust bar + logo, optional menu, shop link and cart button {%- endcomment -%}
+<header id="site-header" class="site-header sticky top-0 z-40" data-scrolled="false">
+  {%- if section.settings.announcement != blank -%}
+    <div class="border-b border-gray-200 bg-gray-100">
+      <div class="mx-auto flex min-h-9 max-w-[90rem] items-center justify-center px-4 py-1.5 sm:px-6 lg:justify-between lg:px-10">
+        <span class="type-label hidden text-gray-700 lg:block">{{ section.settings.label_left }}</span>
+        <p class="text-center text-[0.8125rem] font-semibold leading-snug tracking-[0.01em] text-black">{{ section.settings.announcement }}</p>
+        <span class="type-label hidden text-gray-700 lg:block">{{ section.settings.label_right }}</span>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="nav-bar border-b border-transparent">
+    <nav aria-label="Primary" class="mx-auto flex h-14 max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6 lg:h-16 lg:px-10">
+      <a href="{{ routes.root_url }}" class="brand -ml-1 flex min-h-11 min-w-0 items-center gap-2 px-1" aria-label="{{ shop.name | escape }} home">
+        {%- render 'logo' -%}
+      </a>
+
+      {%- if section.settings.menu != blank and section.settings.menu.links.size > 0 -%}
+        <ul class="hidden items-center gap-8 lg:flex">
+          {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}" class="text-[0.8125rem] font-semibold uppercase tracking-[0.08em] hover:underline"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="flex items-center gap-1 sm:gap-2">
+        {%- if section.settings.shop_label != blank -%}
+          <a href="{{ routes.root_url }}#buy" class="nav-shop group inline-flex h-11 shrink-0 items-center gap-2 border border-gray-500 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.08em] transition-colors hover:border-black hover:bg-black hover:text-white">
+            {{ section.settings.shop_label }}
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="cart-btn relative grid size-11 shrink-0 place-items-center transition-colors hover:bg-gray-100" data-cart-open aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Open cart, {{ cart.item_count }} items">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M5 8h14l-1.1 12.5H6.1z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+          <span class="cart-badge" data-cart-count aria-hidden="true"{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "announcement", "label": "Announcement", "default": "🔥 Holiday Demand Peak - Free Shipping Today" },
+    { "type": "text", "id": "label_left", "label": "Desktop label (left)", "default": "Ships within 24 hours" },
+    { "type": "text", "id": "label_right", "label": "Desktop label (right)", "default": "30-day zero-risk returns" },
+    { "type": "link_list", "id": "menu", "label": "Menu (desktop, optional)" },
+    { "type": "text", "id": "shop_label", "label": "Shop button label", "default": "Shop Now", "info": "Scrolls to the buy box on the home page." }
+  ]
+}
+{% endschema %}

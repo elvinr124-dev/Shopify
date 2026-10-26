@@ -1,0 +1,27 @@
+<section class="mx-auto max-w-[60rem] px-4 py-16 sm:px-6">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h1 class="type-display text-[clamp(2rem,7vw,3rem)]">Your account</h1>
+    <a class="link" href="{{ routes.account_logout_url }}">Log out</a>
+  </div>
+  <h2 class="mt-10 font-display text-lg font-bold uppercase [font-stretch:112%]">Order history</h2>
+  {%- paginate customer.orders by 20 -%}
+    {%- if customer.orders.size > 0 -%}
+      <ul class="mt-4 divide-y divide-gray-200 border-y border-gray-200">
+        {%- for order in customer.orders -%}
+          <li class="flex flex-wrap items-center justify-between gap-3 py-4">
+            <a class="link font-semibold" href="{{ order.customer_url }}">{{ order.name }}</a>
+            <span class="text-gray-600">{{ order.created_at | date: '%B %d, %Y' }}</span>
+            <span class="text-gray-600">{{ order.fulfillment_status_label }}</span>
+            <span class="font-semibold">{{ order.total_price | money }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="mt-4 text-gray-600">You haven't placed any orders yet.</p>
+    {%- endif -%}
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endpaginate -%}
+  <h2 class="mt-12 font-display text-lg font-bold uppercase [font-stretch:112%]">Default address</h2>
+  <div class="mt-4 text-gray-700">{{ customer.default_address | format_address }}</div>
+  <a class="link mt-4 inline-block" href="{{ routes.account_addresses_url }}">Manage addresses ({{ customer.addresses_count }})</a>
+</section>
