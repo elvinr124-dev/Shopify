@@ -83,13 +83,6 @@
             "answer": "<p>Yes. Checkout runs on Shopify's SSL-encrypted, PCI-compliant checkout, and card details are never stored by us.</p>"
           }
         },
-        "question_6": {
-          "type": "question",
-          "settings": {
-            "question": "Does it need power, batteries or charging?",
-            "answer": "<p>No. Nothing to plug in, charge or replace. The warmth comes from dense, heavyweight sherpa that traps your own body heat.</p>"
-          }
-        },
         "question_7": {
           "type": "question",
           "settings": {
@@ -104,7 +97,6 @@
         "question_3",
         "question_4",
         "question_5",
-        "question_6",
         "question_7"
       ],
       "settings": {
