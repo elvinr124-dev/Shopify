@@ -29,7 +29,7 @@
       <p class="mx-auto mt-4 max-w-md text-gray-600">In Shopify admin, go to Products &rarr; Add product. It will appear here automatically.</p>
     </div>
   {%- else -%}
-  <div class="buy-grid mx-auto grid max-w-[90rem] gap-6 px-4 py-14 sm:px-6 md:grid-cols-12 md:grid-rows-[auto_1fr] md:gap-x-8 md:gap-y-0 md:py-20 lg:gap-x-12 lg:px-10 lg:py-24">
+  <div class="buy-grid mx-auto grid max-w-[90rem] gap-5 px-4 py-6 sm:px-6 md:grid-cols-12 md:grid-rows-[auto_1fr] md:gap-x-8 md:gap-y-0 md:py-10 lg:gap-x-12 lg:px-10 lg:py-12">
     {%- comment -%} Name + price (first on phones so a tap on "Claim Yours" lands on the offer) {%- endcomment -%}
     <div class="md:col-span-6 md:col-start-7 md:row-start-1 lg:col-span-5 lg:col-start-8">
       {%- if section.settings.eyebrow != blank -%}
@@ -37,7 +37,7 @@
           <span class="text-black">{{ section.settings.number }}</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>{{ section.settings.eyebrow }}</span>
         </div>
       {%- endif -%}
-      <{{ title_tag }} id="buy-title-{{ section.id }}" class="type-display mt-5 text-balance text-[clamp(1.9rem,8vw,3.5rem)] md:mt-6 md:text-[clamp(1.9rem,4.4vw,3.5rem)]">{{ p.title }}</{{ title_tag }}>
+      <{{ title_tag }} id="buy-title-{{ section.id }}" class="type-display mt-3 text-balance text-[clamp(1.9rem,8vw,3.25rem)] md:mt-4 md:text-[clamp(1.9rem,3.6vw,3.25rem)]">{{ p.title }}</{{ title_tag }}>
       <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 md:mt-5">
         <p class="font-display text-[2.25rem] font-extrabold leading-none text-black [font-stretch:112%] md:text-[2.5rem]"><span class="sr-only">Price: </span><span data-price>{{ current_variant.price | money }}</span></p>
         <p class="flex items-center gap-2" data-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>
@@ -98,7 +98,7 @@
     <div class="md:col-span-6 md:col-start-7 md:row-start-2 md:mt-6 lg:col-span-5 lg:col-start-8">
       {%- if section.settings.bullets != blank -%}
         {%- assign bullets = section.settings.bullets | newline_to_br | split: '<br />' -%}
-        <ul class="space-y-2.5 text-[0.9375rem] leading-snug text-gray-700">
+        <ul class="space-y-2 text-[0.9375rem] leading-snug text-gray-700">
           {%- for bullet in bullets -%}
             {%- assign bullet_text = bullet | strip -%}
             {%- if bullet_text != blank -%}
@@ -108,7 +108,7 @@
         </ul>
       {%- endif -%}
 
-      {%- form 'product', p, id: form_id, class: 'mt-8 space-y-6 border-t border-gray-200 pt-6', novalidate: 'novalidate', data-product-form: '' -%}
+      {%- form 'product', p, id: form_id, class: 'mt-5 space-y-5 border-t border-gray-200 pt-5', novalidate: 'novalidate', data-product-form: '' -%}
         <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
 
         {%- unless p.has_only_default_variant -%}
@@ -270,7 +270,7 @@
   "name": "Buy box",
   "settings": [
     { "type": "product", "id": "product", "label": "Product (home page only)", "info": "Product pages always show their own product. Leave empty to show your newest product." },
-    { "type": "text", "id": "number", "label": "Section number", "default": "04" },
+    { "type": "text", "id": "number", "label": "Section number", "default": "01" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The drop" },
     { "type": "text", "id": "price_note", "label": "Note next to the price", "default": "Free shipping today" },
     { "type": "textarea", "id": "bullets", "label": "Benefit bullets (one per line)", "default": "Heavyweight sherpa lining that holds heat for hours\nNon-electronic: no batteries, cords or charging, ever\nOversized wearable-blanket cut with a deep front pocket\nReinforced double stitching on every seam and cuff" },

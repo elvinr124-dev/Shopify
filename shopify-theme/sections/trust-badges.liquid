@@ -1,13 +1,13 @@
 <section id="trust" class="border-b border-gray-200" aria-labelledby="trust-title-{{ section.id }}">
-  <div class="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 md:py-24 lg:px-10">
+  <div class="mx-auto max-w-[90rem] px-4 py-10 sm:px-6 md:py-14 lg:px-10">
     <div class="type-label flex items-center gap-4 text-gray-600">
       <span class="text-black">{{ section.settings.number }}</span><span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span><span>{{ section.settings.eyebrow }}</span>
     </div>
-    <h2 id="trust-title-{{ section.id }}" class="type-display mt-8 max-w-[18ch] text-balance text-[clamp(1.75rem,6.4vw,3.75rem)]">{{ section.settings.heading }}</h2>
+    <h2 id="trust-title-{{ section.id }}" class="type-display mt-4 max-w-[22ch] text-balance text-[clamp(1.6rem,5.5vw,3rem)]">{{ section.settings.heading }}</h2>
 
-    <ul class="mt-10 grid border-t border-gray-200 md:mt-14 lg:grid-cols-3 lg:border-l">
+    <ul class="mt-6 grid border-t border-gray-200 md:mt-8 lg:grid-cols-3 lg:border-l">
       {%- for block in section.blocks -%}
-        <li class="flex gap-5 border-b border-gray-200 py-6 md:items-center md:gap-8 md:py-8 lg:flex-col lg:items-start lg:border-r lg:p-10" {{ block.shopify_attributes }}>
+        <li class="flex gap-4 border-b border-gray-200 py-4 md:items-center md:gap-6 md:py-5 lg:flex-col lg:items-start lg:border-r lg:p-6" {{ block.shopify_attributes }}>
           <span class="grid size-12 shrink-0 place-items-center border border-gray-500 md:size-14" aria-hidden="true">
             {%- case block.settings.icon -%}
               {%- when 'lock' -%}

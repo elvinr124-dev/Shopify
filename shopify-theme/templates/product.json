@@ -2,10 +2,7 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {
-        "number": "01",
-        "eyebrow": "Product"
-      }
+      "settings": {}
     },
     "marquee": {
       "type": "trust-marquee",
@@ -44,7 +41,9 @@
         "badge_2",
         "badge_3"
       ],
-      "settings": {}
+      "settings": {
+        "number": "02"
+      }
     },
     "faq": {
       "type": "faq",
@@ -109,7 +108,7 @@
         "question_7"
       ],
       "settings": {
-        "number": "02"
+        "number": "03"
       }
     }
   },

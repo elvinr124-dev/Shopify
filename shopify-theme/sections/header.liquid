@@ -2,10 +2,10 @@
 <header id="site-header" class="site-header sticky top-0 z-40" data-scrolled="false">
   {%- if section.settings.announcement != blank -%}
     <div class="border-b border-gray-200 bg-gray-100">
-      <div class="mx-auto flex min-h-9 max-w-[90rem] items-center justify-center px-4 py-1.5 sm:px-6 lg:justify-between lg:px-10">
-        <span class="type-label hidden text-gray-700 lg:block">{{ section.settings.label_left }}</span>
+      <div class="mx-auto flex min-h-9 max-w-[90rem] items-center justify-center gap-4 px-4 py-1.5 sm:px-6 md:justify-between lg:px-10">
+        <span class="hidden text-[0.8125rem] font-semibold text-black md:block">{{ section.settings.label_left }}</span>
         <p class="text-center text-[0.8125rem] font-semibold leading-snug tracking-[0.01em] text-black">{{ section.settings.announcement }}</p>
-        <span class="type-label hidden text-gray-700 lg:block">{{ section.settings.label_right }}</span>
+        <span class="hidden text-[0.8125rem] font-semibold text-black md:block">{{ section.settings.label_right }}</span>
       </div>
     </div>
   {%- endif -%}
