@@ -1,0 +1,92 @@
+{%- comment -%}
+  Orders page: open to everyone (guest checkout is fine). Logged-out visitors see how to track an
+  order plus a log in button; logged-in customers see their orders, or "No orders found".
+{%- endcomment -%}
+{%- liquid
+  assign support_email = settings.support_email | default: shop.email
+  assign contact_url = section.settings.contact_url | default: '/pages/contact'
+-%}
+<section class="mx-auto max-w-[48rem] px-4 py-8 sm:px-6 md:py-10" aria-labelledby="orders-title">
+  {%- if customer -%}
+    <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+      <h1 id="orders-title" class="type-display text-[clamp(2.25rem,8vw,3.5rem)]">Your orders</h1>
+      <p class="text-[0.9375rem] text-gray-600">Signed in as <span class="font-semibold text-black">{{ customer.email }}</span> &middot; <a class="link" href="{{ routes.account_logout_url }}">Log out</a></p>
+    </div>
+
+    {%- if customer.orders.size > 0 -%}
+      <ul class="mt-5 divide-y divide-gray-200 border-y border-gray-200">
+        {%- for order in customer.orders limit: 50 -%}
+          {%- liquid
+            assign tracking_url = false
+            for line_item in order.line_items
+              if line_item.fulfillment.tracking_url
+                assign tracking_url = line_item.fulfillment.tracking_url
+                break
+              endif
+            endfor
+          -%}
+          <li class="grid gap-x-4 gap-y-1 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+            <div>
+              <p class="font-semibold">Order {{ order.name }} <span class="font-normal text-gray-600">&middot; {{ order.created_at | date: '%b %d, %Y' }}</span></p>
+              <p class="mt-0.5 text-[0.875rem] text-gray-700">
+                {%- if order.cancelled -%}Cancelled{%- else -%}{{ order.fulfillment_status_label }} &middot; {{ order.financial_status_label }}{%- endif -%}
+                &middot; {{ order.total_price | money }}
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-[0.875rem] font-semibold uppercase tracking-[0.06em]">
+              {%- if tracking_url -%}<a class="link" href="{{ tracking_url }}" target="_blank" rel="noopener">Track shipment</a>{%- endif -%}
+              <a class="link" href="{{ order.customer_url }}">View details</a>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <div class="mt-5 border-y border-gray-200 py-6">
+        <p class="font-display text-xl font-extrabold uppercase">No orders found</p>
+        <p class="mt-1 text-[0.9375rem] text-gray-700">We couldn't find any orders for {{ customer.email }}. If you checked out as a guest with a different email, log in with that email instead.</p>
+        <a href="{{ routes.root_url }}#buy" class="btn-primary btn-primary--sm mt-4">Shop the latest arrival</a>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <h1 id="orders-title" class="type-display text-[clamp(2.25rem,8vw,3.5rem)]">Track your order</h1>
+    <p class="mt-2 text-base leading-relaxed text-gray-700 md:text-lg">See your order status and shipment tracking anytime in your Trending Arrivals account.</p>
+    <a href="{{ routes.account_login_url }}" class="btn-primary mt-4 w-full sm:w-auto sm:min-w-[16rem]">
+      <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.75"/><path d="M4.5 20.5c.9-3.6 3.9-5.75 7.5-5.75s6.6 2.15 7.5 5.75"/></svg>
+      Log in to view orders
+    </a>
+
+    <div class="mt-6 grid gap-5 border-t border-gray-200 pt-5 md:grid-cols-2 md:gap-8">
+      <div>
+        <h2 class="font-display text-lg font-extrabold uppercase">How tracking works</h2>
+        <ol class="mt-2 list-decimal space-y-1.5 pl-5 text-[0.9375rem] leading-snug text-gray-700">
+          <li>Log in with the same email you used at checkout.</li>
+          <li>Pick your order to see its latest status.</li>
+          <li>Once it ships, open the tracking link in your order details.</li>
+        </ol>
+      </div>
+      <div>
+        <h2 class="font-display text-lg font-extrabold uppercase">Check your shipping email</h2>
+        <p class="mt-2 text-[0.9375rem] leading-snug text-gray-700">Your shipping confirmation email has a tracking link too. If your order hasn't shipped yet, tracking may not be available just yet.</p>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="mt-6 border-t border-gray-200 pt-5">
+    <h2 class="font-display text-lg font-extrabold uppercase">Need help?</h2>
+    <p class="mt-2 text-[0.9375rem] leading-snug text-gray-700">
+      Can't find your order or tracking details? <a class="link font-semibold text-black" href="{{ contact_url }}">Contact our support team</a>
+      {%- if support_email != blank %} or email <a class="link font-semibold text-black" href="mailto:{{ support_email }}">{{ support_email }}</a>{% endif %}
+      with your order number and the email you used at checkout.
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Orders",
+  "settings": [
+    { "type": "text", "id": "contact_url", "label": "Contact page link", "default": "/pages/contact" }
+  ],
+  "presets": [{ "name": "Orders" }]
+}
+{% endschema %}

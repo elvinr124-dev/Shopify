@@ -12,7 +12,7 @@
           "settings": {
             "icon": "lock",
             "title": "Secure Checkout",
-            "text": "SSL-encrypted from your first click to your final payment."
+            "text": "Fast and secure checkout from your first click to your final payment."
           }
         },
         "badge_2": {
@@ -76,7 +76,7 @@
           "type": "question",
           "settings": {
             "question": "Is checkout secure?",
-            "answer": "<p>Yes. Checkout runs on Shopify's SSL-encrypted, PCI-compliant checkout, and card details are never stored by us.</p>"
+            "answer": "<p>Yes. Checkout is fast and secure: it runs on Shopify's PCI-compliant checkout, and card details are never stored by us.</p>"
           }
         },
         "question_7": {

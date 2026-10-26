@@ -72,7 +72,7 @@
           <li><a href="{{ routes.root_url }}#top" class="pop-link" data-pop-link>Home</a></li>
           <li><a href="{{ routes.root_url }}#buy" class="pop-link" data-pop-link>Products</a></li>
           <li><a href="{{ section.settings.contact_url | default: '/pages/contact' }}" class="pop-link" data-pop-link>Contact Us</a></li>
-          <li><a href="{{ routes.account_url }}" class="pop-link" data-pop-link>Orders</a></li>
+          <li><a href="{{ section.settings.orders_url | default: '/pages/orders' }}" class="pop-link" data-pop-link>Orders</a></li>
           <li><a href="{{ routes.root_url }}#trust" class="pop-link" data-pop-link>Learn More</a></li>
         </ul>
         <div class="mt-3 border-t-2 border-black">
@@ -101,7 +101,7 @@
       { "title": "Home", "url": {{ routes.root_url | append: '#top' | json }}, "keywords": ["home", "top", "start", "welcome", "main"] },
       { "title": "Products", "url": {{ routes.root_url | append: '#buy' | json }}, "keywords": ["product", "products", "shop", "buy", "store", "item"] },
       { "title": "Contact Us", "url": {{ section.settings.contact_url | default: '/pages/contact' | json }}, "keywords": ["contact", "contact us", "email", "message", "support", "help"] },
-      { "title": "Orders", "url": {{ routes.account_url | json }}, "keywords": ["orders", "order", "my orders", "track", "tracking", "account"] },
+      { "title": "Orders", "url": {{ section.settings.orders_url | default: '/pages/orders' | json }}, "keywords": ["orders", "order", "my orders", "track", "tracking", "account"] },
       { "title": "Learn More", "url": {{ routes.root_url | append: '#trust' | json }}, "keywords": ["learn", "learn more", "why", "why us", "about", "shipping", "secure"] },
       { "title": "FAQs", "url": {{ routes.root_url | append: '#faq' | json }}, "keywords": ["faq", "faqs", "questions", "returns", "refund", "size", "sizing"] },
       { "title": "Cart", "url": {{ routes.cart_url | json }}, "keywords": ["cart", "bag", "basket", "checkout", "my cart"] },
@@ -121,7 +121,8 @@
     { "type": "text", "id": "label_left", "label": "Desktop label (left)", "default": "Ships within 24 hours" },
     { "type": "text", "id": "label_right", "label": "Desktop label (right)", "default": "30-day zero-risk returns" },
     { "type": "text", "id": "marquee_items", "label": "Scrolling strip items (separate with |)", "default": "Free shipping today | Ships within 24 hours | 30-day zero-risk returns | Fast checkout | 24/7 support" },
-    { "type": "text", "id": "contact_url", "label": "Contact page link", "default": "/pages/contact", "info": "Create a page with the Contact template at this address (Online Store > Pages)." }
+    { "type": "text", "id": "contact_url", "label": "Contact page link", "default": "/pages/contact", "info": "Create a page with the Contact template at this address (Online Store > Pages)." },
+    { "type": "text", "id": "orders_url", "label": "Orders page link", "default": "/pages/orders", "info": "Create a page with the Orders template at this address (Online Store > Pages)." }
   ]
 }
 {% endschema %}
