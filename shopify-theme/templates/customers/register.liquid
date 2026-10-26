@@ -1,1 +1,11 @@
-{%- render 'account-forms' -%}
+<section class="mx-auto max-w-[28rem] px-4 py-16 sm:px-6">
+  <h1 class="type-display text-[clamp(2rem,7vw,3rem)]">Create account</h1>
+  {%- form 'create_customer', class: 'mt-8 space-y-4' -%}
+    {%- if form.errors -%}<div class="text-sm text-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div><label for="reg-first" class="type-label block text-gray-600">First name</label><input id="reg-first" type="text" name="customer[first_name]" autocomplete="given-name" class="field mt-2 w-full"></div>
+    <div><label for="reg-last" class="type-label block text-gray-600">Last name</label><input id="reg-last" type="text" name="customer[last_name]" autocomplete="family-name" class="field mt-2 w-full"></div>
+    <div><label for="reg-email" class="type-label block text-gray-600">Email</label><input id="reg-email" type="email" name="customer[email]" autocomplete="email" required class="field mt-2 w-full"></div>
+    <div><label for="reg-password" class="type-label block text-gray-600">Password</label><input id="reg-password" type="password" name="customer[password]" autocomplete="new-password" required class="field mt-2 w-full"></div>
+    <button type="submit" class="btn-primary w-full">Create account</button>
+  {%- endform -%}
+</section>
