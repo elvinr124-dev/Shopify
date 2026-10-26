@@ -1,0 +1,26 @@
+{%- comment -%} Brief intro banner: what the store is about, directly above the product {%- endcomment -%}
+<section id="top" class="landing border-b border-gray-200" aria-labelledby="landing-title-{{ section.id }}">
+  <div class="mx-auto flex max-w-[90rem] flex-col gap-1.5 px-4 py-4 sm:px-6 md:py-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:px-10">
+    <div class="min-w-0">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label text-gray-700">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 id="landing-title-{{ section.id }}" class="type-display mt-1.5 text-[clamp(1.6rem,7.5vw,2.75rem)]">{{ section.settings.heading }}</h1>
+    </div>
+    {%- if section.settings.text != blank -%}
+      <p class="max-w-[30rem] text-[0.9375rem] leading-snug text-gray-700 lg:pb-1 lg:text-right">{{ section.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Intro banner",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Welcome to Trending Arrivals" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's trending. Delivered." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "We find what everyone's talking about and ship it fast, at an honest price. Here's the latest arrival." }
+  ],
+  "presets": [{ "name": "Intro banner" }]
+}
+{% endschema %}

@@ -1,5 +1,9 @@
 {
   "sections": {
+    "landing": {
+      "type": "landing",
+      "settings": {}
+    },
     "buy": {
       "type": "main-product",
       "settings": {}
@@ -113,6 +117,7 @@
     }
   },
   "order": [
+    "landing",
     "buy",
     "marquee",
     "trust",
