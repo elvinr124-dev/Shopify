@@ -89,12 +89,12 @@ section[id], #main { scroll-margin-top: var(--header-h); }
   }
   .site-header[data-scrolled="true"] .nav-bar {
     background-color: rgb(255 255 255 / 0.86);
-    border-bottom-color: var(--ta-200);
+    border-bottom-color: var(--ta-black);
     -webkit-backdrop-filter: blur(14px) saturate(1.1);
     backdrop-filter: blur(14px) saturate(1.1);
   }
   .site-header[data-scrolled="true"] .brand-mark { transform: scale(0.92); }
-  .brand-mark { transform-origin: left center; transition: transform 0.3s var(--ta-ease); }
+  .brand-mark { transform-origin: center; transition: transform 0.3s var(--ta-ease); }
 
   .cart-badge {
     position: absolute;
