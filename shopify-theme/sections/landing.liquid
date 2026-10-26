@@ -8,8 +8,8 @@
       <h1 id="landing-title-{{ section.id }}" class="type-display mt-3 max-w-[14ch] text-balance text-[clamp(2.5rem,12vw,4rem)] md:mt-5 md:text-[clamp(3.5rem,8vw,5.5rem)] lg:text-[clamp(4rem,6.4vw,7rem)]">{{ section.settings.heading }}</h1>
     </div>
     {%- if section.settings.text != blank -%}
-      <div class="lg:max-w-[26rem] lg:pb-2">
-        <p class="text-base leading-relaxed text-gray-700 md:text-lg">{{ section.settings.text }}</p>
+      <div class="lg:max-w-[38rem] lg:pb-2">
+        <p class="text-base leading-relaxed text-gray-700 md:text-xl lg:text-[clamp(1.5rem,2vw,2rem)] lg:leading-snug">{{ section.settings.text }}</p>
         {%- if section.settings.link_label != blank -%}
           <a href="#buy" class="group mt-4 inline-flex min-h-11 items-center gap-2 border-b border-black text-[0.8125rem] font-semibold uppercase tracking-[0.08em] md:mt-6">
             {{ section.settings.link_label }}
