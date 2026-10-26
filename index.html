@@ -162,8 +162,32 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- ================================================================================= 01 HERO -->
-    <section id="top" class="hero relative border-b border-gray-200" aria-labelledby="hero-title">
+    <!-- ============================================================================== 00 LANDING -->
+    <!-- Brand landing banner: who we are, then the latest arrival directly underneath -->
+    <section id="top" class="landing relative border-b border-gray-200" aria-labelledby="landing-title">
+      <div class="mx-auto grid max-w-[90rem] gap-4 px-4 pb-7 pt-7 sm:px-6 md:gap-5 md:py-12 lg:grid-cols-12 lg:items-end lg:gap-10 lg:px-10 lg:py-14">
+        <div class="lg:col-span-8">
+          <p class="type-label flex items-center gap-3 text-gray-700">
+            <span class="text-black">00</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>Welcome to Trending Arrivals
+          </p>
+          <h1 id="landing-title" class="type-display mt-3 text-balance text-[clamp(2.1rem,10.5vw,4.5rem)] md:mt-5 md:text-[min(7vw,5.5rem)] lg:text-[min(5.4vw,5.5rem)]">
+            What's trending. Delivered.
+          </h1>
+        </div>
+        <div class="lg:col-span-4 lg:pb-1">
+          <p class="max-w-[30rem] text-[0.975rem] leading-relaxed text-gray-700 md:text-lg">
+            We find what everyone's talking about and ship it fast, at an honest price. Here's the latest arrival.
+          </p>
+          <a href="#latest" class="group mt-3 inline-flex min-h-11 items-center gap-2 border-b border-black text-[0.8125rem] font-semibold uppercase tracking-[0.08em] md:mt-5">
+            Shop the latest arrival
+            <svg class="size-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= 01 LATEST ARRIVAL -->
+    <section id="latest" class="hero relative border-b border-gray-200" aria-labelledby="latest-title">
       <div class="hero-grid mx-auto grid max-w-[90rem] md:grid-cols-12">
         <!-- Product shot: whole garment on phones, framed 4:5 panel from tablet up -->
         <div class="relative md:order-2 md:col-span-6 md:border-l md:border-gray-200 md:p-6 lg:col-span-5 lg:p-10">
@@ -185,11 +209,11 @@
         <!-- Copy + CTA -->
         <div class="hero-copy relative z-10 flex flex-col pt-5 px-4 pb-8 sm:px-6 md:order-1 md:col-span-6 md:mt-0 md:justify-center md:py-14 lg:col-span-7 lg:px-10 lg:py-20">
           <p class="type-label flex items-center gap-3 text-gray-700">
-            <span class="text-black">01</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>Limited holiday drop
+            <span class="text-black">01</span><span class="h-px w-8 bg-gray-500" aria-hidden="true"></span>Latest arrival<span class="bg-black px-1.5 py-0.5 text-white">New</span>
           </p>
-          <h1 id="hero-title" class="type-display mt-3 max-w-[13ch] text-balance text-[clamp(1.85rem,9vw,4.5rem)] md:mt-6 md:text-[min(5.6vw,6.25rem)] lg:text-[min(5.4vw,6.25rem)]">
+          <h2 id="latest-title" class="type-display mt-3 max-w-[13ch] text-balance text-[clamp(1.85rem,9vw,4.5rem)] md:mt-6 md:text-[min(5.6vw,6.25rem)] lg:text-[min(5.4vw,6.25rem)]">
             The warmest thing you'll never charge.
-          </h1>
+          </h2>
           <p class="mt-3 max-w-[34rem] text-[0.975rem] leading-relaxed text-gray-700 md:mt-6 md:text-lg">
             Zero-hassle and non-electronic: no batteries, no cords, nothing to break. Just heavyweight sherpa comfort for cozy holiday nights.
           </p>

@@ -23,7 +23,7 @@ To deploy, upload the folder as-is to any static host (Netlify drop, Vercel, Git
 ## What's on the page
 
 - Sticky header with the logo, the `🔥 Holiday Demand Peak - Free Shipping Today` bar, a **Shop Now** link that scrolls to the buy box, and a cart button with a live count.
-- Hero with the `Claim Yours Now - $37.99` call-to-action button. On a phone, the headline, product and button all fit on the first screen.
+- Landing banner at the top ("What's trending. Delivered.") introducing the store, with the **latest arrival** spotlighted directly underneath: product image, price, headline and the `Claim Yours Now - $37.99` button. On a phone the product image and price show on the first screen.
 - Trust badges: Secure Checkout, 24/7 Support and Fast Holiday Fulfillment.
 - Three value cards: High-Grade Materials, Zero-Return Risk and Premium Stitching.
 - Buy box:
