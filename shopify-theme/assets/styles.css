@@ -248,6 +248,10 @@ section[id], #main { scroll-margin-top: var(--header-h); }
   }
   .marquee__toggle:hover { color: var(--ta-black); }
   .marquee__toggle .icon-play { display: none; }
+  /* Slim variant used inside the sticky header */
+  .marquee-band--slim .marquee__group li { gap: 1.25rem; padding: 0.45rem 1.25rem 0.45rem 0; font-size: 0.75rem; }
+  .marquee-band--slim .marquee__group li::after { width: 0.3rem; height: 0.3rem; }
+  .marquee-band--slim .marquee__toggle { width: 2.25rem; min-height: 0; }
   .marquee-band[data-paused="true"] .icon-play { display: block; }
   .marquee-band[data-paused="true"] .icon-pause { display: none; }
 

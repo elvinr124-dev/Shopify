@@ -8,10 +8,6 @@
       "type": "main-product",
       "settings": {}
     },
-    "marquee": {
-      "type": "trust-marquee",
-      "settings": {}
-    },
     "trust": {
       "type": "trust-badges",
       "blocks": {
@@ -119,7 +115,6 @@
   "order": [
     "landing",
     "buy",
-    "marquee",
     "trust",
     "faq"
   ]

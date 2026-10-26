@@ -4,10 +4,6 @@
       "type": "main-product",
       "settings": {}
     },
-    "marquee": {
-      "type": "trust-marquee",
-      "settings": {}
-    },
     "trust": {
       "type": "trust-badges",
       "blocks": {
@@ -114,7 +110,6 @@
   },
   "order": [
     "main",
-    "marquee",
     "trust",
     "faq"
   ]

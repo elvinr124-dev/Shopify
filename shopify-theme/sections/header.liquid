@@ -10,6 +10,26 @@
     </div>
   {%- endif -%}
 
+  {%- if section.settings.marquee_items != blank -%}
+    {%- assign marquee_items = section.settings.marquee_items | split: '|' -%}
+    <div class="marquee-band marquee-band--slim relative border-b border-gray-200 bg-white" data-marquee>
+      <p class="sr-only">{{ marquee_items | join: '. ' }}</p>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          {%- for i in (1..2) -%}
+            <ul class="marquee__group">
+              {%- for item in marquee_items -%}<li>{{ item | strip }}</li>{%- endfor -%}
+            </ul>
+          {%- endfor -%}
+        </div>
+      </div>
+      <button type="button" class="marquee__toggle" data-marquee-toggle aria-pressed="false" aria-label="Pause scrolling banner">
+        <svg class="icon-pause size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        <svg class="icon-play size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12-7.5z"/></svg>
+      </button>
+    </div>
+  {%- endif -%}
+
   <div class="nav-bar border-b border-transparent">
     <nav aria-label="Primary" class="mx-auto flex h-14 max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6 lg:h-16 lg:px-10">
       <a href="{{ routes.root_url }}" class="brand -ml-1 flex min-h-11 min-w-0 items-center gap-2 px-1" aria-label="{{ shop.name | escape }} home">
@@ -47,6 +67,7 @@
     { "type": "text", "id": "announcement", "label": "Announcement", "default": "🔥 Holiday Demand Peak - Free Shipping Today" },
     { "type": "text", "id": "label_left", "label": "Desktop label (left)", "default": "Ships within 24 hours" },
     { "type": "text", "id": "label_right", "label": "Desktop label (right)", "default": "30-day zero-risk returns" },
+    { "type": "text", "id": "marquee_items", "label": "Scrolling strip items (separate with |)", "default": "Free shipping today | Ships within 24 hours | 30-day zero-risk returns | No batteries. No cords. | SSL-encrypted checkout | 24/7 support" },
     { "type": "link_list", "id": "menu", "label": "Menu (desktop, optional)" },
     { "type": "text", "id": "shop_label", "label": "Shop button label", "default": "Shop Now", "info": "Scrolls to the buy box on the home page." }
   ]
