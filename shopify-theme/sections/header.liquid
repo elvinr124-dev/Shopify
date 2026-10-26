@@ -31,8 +31,16 @@
   {%- endif -%}
 
   <div class="nav-bar border-b border-transparent">
-    <nav aria-label="Primary" class="mx-auto flex h-14 max-w-[90rem] items-center justify-between gap-3 px-4 sm:px-6 lg:h-16 lg:px-10">
-      <a href="{{ routes.root_url }}" class="brand -ml-1 flex min-h-11 min-w-0 items-center gap-2 px-1" aria-label="{{ shop.name | escape }} home">
+    <nav aria-label="Primary" class="mx-auto grid h-14 max-w-[90rem] grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 sm:px-6 md:flex md:justify-between md:gap-3 lg:h-16 lg:px-10">
+      {%- comment -%} Phones: menu button (left of the centered logo) {%- endcomment -%}
+      <div class="flex items-center md:hidden">
+        <button type="button" class="icon-btn -ml-2" data-pop-toggle="mobile-menu" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <svg class="icon-open size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/></svg>
+          <svg class="icon-close size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <a href="{{ routes.root_url }}" class="brand flex min-h-11 min-w-0 items-center justify-self-center gap-2 px-1 md:-ml-1" aria-label="{{ shop.name | escape }} home">
         {%- render 'logo' -%}
       </a>
 
@@ -44,9 +52,13 @@
         </ul>
       {%- endif -%}
 
-      <div class="flex items-center gap-1 sm:gap-2">
+      <div class="flex items-center justify-end gap-0.5 sm:gap-2">
+        {%- comment -%} Phones: search button {%- endcomment -%}
+        <button type="button" class="icon-btn md:hidden" data-pop-toggle="mobile-search" aria-expanded="false" aria-controls="mobile-search" aria-label="Search">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>
+        </button>
         {%- if section.settings.shop_label != blank -%}
-          <a href="{{ routes.root_url }}#buy" class="nav-shop group inline-flex h-11 shrink-0 items-center gap-2 border border-gray-500 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.08em] transition-colors hover:border-black hover:bg-black hover:text-white">
+          <a href="{{ routes.root_url }}#buy" class="nav-shop group hidden h-11 shrink-0 md:inline-flex items-center gap-2 border border-gray-500 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.08em] transition-colors hover:border-black hover:bg-black hover:text-white">
             {{ section.settings.shop_label }}
             <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -58,6 +70,41 @@
       </div>
     </nav>
   </div>
+
+  {%- comment -%} Phones: menu window {%- endcomment -%}
+  <div id="mobile-menu" class="pop-window absolute left-3 top-full z-50 mt-2 w-60 border border-black bg-white md:hidden" hidden data-pop>
+    <ul class="divide-y divide-gray-200 text-[0.9375rem] font-semibold uppercase tracking-[0.06em]">
+      <li><a href="{{ routes.root_url }}#top" class="pop-link" data-pop-link>Home</a></li>
+      <li><a href="{{ routes.root_url }}#buy" class="pop-link" data-pop-link>Products</a></li>
+      <li><a href="{{ routes.root_url }}#trust" class="pop-link" data-pop-link>Why Us</a></li>
+      <li><a href="{{ routes.root_url }}#faq" class="pop-link" data-pop-link>FAQs</a></li>
+      <li><a href="{{ routes.cart_url }}" class="pop-link" data-pop-link><span>Cart <span class="text-gray-600" data-cart-count-text>({{ cart.item_count }})</span></span></a></li>
+    </ul>
+  </div>
+
+  {%- comment -%} Phones: search window. Matches pages (home, products, FAQs, cart) and product names {%- endcomment -%}
+  <div id="mobile-search" class="pop-window absolute inset-x-3 top-full z-50 mt-2 border border-black bg-white p-3 md:hidden" hidden data-pop>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="flex gap-2" data-quick-search>
+      <label for="quick-search-input" class="sr-only">Search the store</label>
+      <input id="quick-search-input" type="search" name="q" autocomplete="off" placeholder="Search products, cart, FAQs..." class="field min-w-0 flex-1" data-quick-search-input>
+      <input type="hidden" name="type" value="product">
+      <button type="submit" class="btn-primary btn-primary--sm shrink-0">Go</button>
+    </form>
+    <ul class="mt-2 divide-y divide-gray-200" data-quick-search-results></ul>
+    <p class="sr-only" aria-live="polite" data-quick-search-status></p>
+  </div>
+  <script type="application/json" id="quick-search-index">
+    [
+      { "title": "Home", "url": {{ routes.root_url | append: '#top' | json }}, "keywords": ["home", "top", "start", "welcome", "main"] },
+      { "title": "Products", "url": {{ routes.root_url | append: '#buy' | json }}, "keywords": ["product", "products", "shop", "buy", "store", "item"] },
+      { "title": "Why Us", "url": {{ routes.root_url | append: '#trust' | json }}, "keywords": ["why", "why us", "zero hassle", "support", "shipping", "secure", "fulfillment"] },
+      { "title": "FAQs", "url": {{ routes.root_url | append: '#faq' | json }}, "keywords": ["faq", "faqs", "questions", "help", "returns", "refund", "size", "sizing"] },
+      { "title": "Cart", "url": {{ routes.cart_url | json }}, "keywords": ["cart", "bag", "basket", "checkout", "my cart"] }
+      {%- for p in collections.all.products limit: 50 -%}
+        ,{ "title": {{ p.title | json }}, "url": {{ p.url | json }}, "keywords": {{ p.tags | json }}, "type": {{ p.product_type | json }}, "vendor": {{ p.vendor | json }}, "product": true }
+      {%- endfor %}
+    ]
+  </script>
 </header>
 
 {% schema %}

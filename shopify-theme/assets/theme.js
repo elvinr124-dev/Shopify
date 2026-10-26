@@ -595,6 +595,130 @@
   }
 
   /* ===================================================================================
+     Phone header: menu + search pop-up windows
+     =================================================================================== */
+  function initPopups() {
+    const toggles = $$('[data-pop-toggle]');
+    if (!toggles.length) return;
+    const popFor = (btn) => document.getElementById(btn.getAttribute('aria-controls'));
+    const setMenuLabel = (btn, isOpen) => { if (btn.dataset.popToggle === 'mobile-menu') btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu'); };
+
+    function closeAll(except) {
+      for (const btn of toggles) {
+        const pop = popFor(btn);
+        if (!pop || pop === except) continue;
+        pop.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+        setMenuLabel(btn, false);
+      }
+    }
+    function open(btn) {
+      const pop = popFor(btn);
+      if (!pop) return;
+      closeAll(pop);
+      pop.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      setMenuLabel(btn, true);
+      const first = $('input:not([type="hidden"]), a[href], button', pop);
+      if (first) first.focus({ preventScroll: true });
+    }
+
+    for (const btn of toggles) {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (btn.getAttribute('aria-expanded') === 'true') closeAll();
+        else open(btn);
+      });
+    }
+    // Close on outside click, on choosing a link, on Escape, and when the phone layout no longer applies
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-pop]') && !e.target.closest('[data-pop-link], .search-hit')) return;
+      closeAll();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const openBtn = toggles.find((b) => b.getAttribute('aria-expanded') === 'true');
+      if (openBtn) { closeAll(); openBtn.focus(); }
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeAll(); }, { passive: true });
+
+    initQuickSearch(closeAll);
+  }
+
+  // Search that jumps straight to a page or section ("cart", "faqs", "home") or a product by name;
+  // anything else falls through to Shopify's search results page.
+  function initQuickSearch(closeAll) {
+    const form = $('[data-quick-search]');
+    const input = $('[data-quick-search-input]');
+    const list = $('[data-quick-search-results]');
+    const status = $('[data-quick-search-status]');
+    if (!form || !input || !list) return;
+    let index = [];
+    try { index = JSON.parse(($('#quick-search-index') || {}).textContent || '[]'); } catch (_) { index = []; }
+
+    const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    function score(item, q) {
+      const title = norm(item.title);
+      const terms = [title, norm(item.type), norm(item.vendor), ...(item.keywords || []).map(norm)].filter(Boolean);
+      let best = 0;
+      for (const t of terms) {
+        if (t === q) best = Math.max(best, 4);
+        else if (t.startsWith(q)) best = Math.max(best, 3);
+        else if (t.includes(q)) best = Math.max(best, 2);
+        else if (t.length > 2 && q.split(' ').includes(t)) best = Math.max(best, 1); // "my cart" -> cart
+      }
+      if (!best && q.split(' ').every((w) => title.includes(w))) best = 2;
+      return best;
+    }
+    function matches(raw) {
+      const q = norm(raw);
+      if (!q) return [];
+      return index
+        .map((item) => ({ item, s: score(item, q) }))
+        .filter((m) => m.s > 0)
+        .sort((a, b) => b.s - a.s)
+        .map((m) => m.item);
+    }
+    function go(url) {
+      closeAll();
+      input.blur();
+      const target = new URL(url, window.location.href);
+      const el = target.hash && target.pathname === window.location.pathname ? document.getElementById(target.hash.slice(1)) : null;
+      if (el) {
+        el.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+        window.history.replaceState(null, '', target.hash);
+      } else {
+        window.location.href = target.href;
+      }
+    }
+    function render() {
+      const hits = matches(input.value).slice(0, 6);
+      list.replaceChildren(...hits.map((hit) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.className = 'search-hit';
+        a.href = hit.url;
+        const name = document.createElement('span');
+        name.textContent = hit.title;
+        const kind = document.createElement('span');
+        kind.textContent = hit.product ? 'Product' : 'Page';
+        a.append(name, kind);
+        a.addEventListener('click', (e) => { e.preventDefault(); go(hit.url); });
+        li.append(a);
+        return li;
+      }));
+      if (status) status.textContent = input.value.trim() ? `${hits.length} result${hits.length === 1 ? '' : 's'}` : '';
+    }
+    input.addEventListener('input', render);
+    form.addEventListener('submit', (e) => {
+      const hit = matches(input.value)[0];
+      if (!hit) return; // no direct match: let Shopify's search page handle it
+      e.preventDefault();
+      go(hit.url);
+    });
+  }
+
+  /* ===================================================================================
      Boot (+ re-init when sections change in the theme editor)
      =================================================================================== */
   function initSections() {
@@ -606,6 +730,7 @@
 
   function init() {
     initHeader();
+    initPopups();
     initCart();
     initSections();
   }
