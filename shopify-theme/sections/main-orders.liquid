@@ -5,7 +5,7 @@
 {%- liquid
   assign support_email = settings.support_email | default: shop.email
   assign contact_url = routes.search_url | append: '?view=contact'
-  if pages['contact'].id
+  if pages['contact'].id and pages['contact'].template_suffix == 'contact'
     assign contact_url = pages['contact'].url
   endif
 -%}

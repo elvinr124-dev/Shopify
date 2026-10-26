@@ -32,11 +32,11 @@
 
   {%- liquid
     assign orders_href = routes.search_url | append: '?view=orders'
-    if pages['orders'].id
+    if pages['orders'].id and pages['orders'].template_suffix == 'orders'
       assign orders_href = pages['orders'].url
     endif
     assign contact_href = routes.search_url | append: '?view=contact'
-    if pages['contact'].id
+    if pages['contact'].id and pages['contact'].template_suffix == 'contact'
       assign contact_href = pages['contact'].url
     endif
     if customer
