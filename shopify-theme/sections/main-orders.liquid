@@ -4,7 +4,10 @@
 {%- endcomment -%}
 {%- liquid
   assign support_email = settings.support_email | default: shop.email
-  assign contact_url = section.settings.contact_url | default: '/pages/contact'
+  assign contact_url = routes.search_url | append: '?view=contact'
+  if pages['contact'].id
+    assign contact_url = pages['contact'].url
+  endif
 -%}
 <section class="mx-auto max-w-[48rem] px-4 py-8 sm:px-6 md:py-10" aria-labelledby="orders-title">
   {%- if customer -%}
@@ -84,9 +87,7 @@
 {% schema %}
 {
   "name": "Orders",
-  "settings": [
-    { "type": "text", "id": "contact_url", "label": "Contact page link", "default": "/pages/contact" }
-  ],
+  "settings": [],
   "presets": [{ "name": "Orders" }]
 }
 {% endschema %}
