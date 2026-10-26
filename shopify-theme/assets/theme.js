@@ -601,7 +601,7 @@
     const toggles = $$('[data-pop-toggle]');
     if (!toggles.length) return;
     const popFor = (btn) => document.getElementById(btn.getAttribute('aria-controls'));
-    const setMenuLabel = (btn, isOpen) => { if (btn.dataset.popToggle === 'mobile-menu') btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu'); };
+    const setMenuLabel = (btn, isOpen) => { if (btn.dataset.popToggle === 'site-menu') btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu'); };
 
     function closeAll(except) {
       for (const btn of toggles) {
@@ -630,7 +630,7 @@
         else open(btn);
       });
     }
-    // Close on outside click, on choosing a link, on Escape, and when the phone layout no longer applies
+    // Close on outside click, on choosing a link, and on Escape
     document.addEventListener('click', (e) => {
       if (e.target.closest('[data-pop]') && !e.target.closest('[data-pop-link], .search-hit')) return;
       closeAll();
@@ -640,7 +640,6 @@
       const openBtn = toggles.find((b) => b.getAttribute('aria-expanded') === 'true');
       if (openBtn) { closeAll(); openBtn.focus(); }
     });
-    window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeAll(); }, { passive: true });
 
     initQuickSearch(closeAll);
   }

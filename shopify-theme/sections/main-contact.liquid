@@ -1,0 +1,64 @@
+{%- assign contact_email = section.settings.email | default: settings.support_email | default: shop.email -%}
+<section class="mx-auto max-w-[46rem] px-4 py-8 sm:px-6 md:py-10" aria-labelledby="contact-title">
+  <h1 id="contact-title" class="type-display text-[clamp(2.25rem,8vw,3.5rem)]">{{ section.settings.heading }}</h1>
+  <p class="mt-2 text-base leading-relaxed text-gray-700 md:text-lg">
+    {{ section.settings.text }}
+    {%- if contact_email != blank %} <a class="link font-semibold text-black" href="mailto:{{ contact_email }}">{{ contact_email }}</a>{% endif -%}
+    {%- if section.settings.text_after != blank %} {{ section.settings.text_after }}{% endif %}
+  </p>
+
+  {%- form 'contact', id: 'contact-form', class: 'mt-6 grid gap-4 border-t border-gray-200 pt-6 sm:grid-cols-2' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="flex items-center gap-2 bg-gray-100 px-4 py-3 text-[0.9375rem] font-semibold sm:col-span-2" role="status">
+        <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg>
+        Thanks for reaching out. We'll get back to you within 24 hours.
+      </p>
+    {%- endif -%}
+    {%- if form.errors -%}
+      <div class="text-[0.9375rem] text-error sm:col-span-2" role="alert">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <div>
+      <label for="contact-name" class="type-label block text-gray-600">Name</label>
+      <input id="contact-name" type="text" name="contact[name]" autocomplete="name" value="{{ form.name | default: customer.name }}" class="field mt-2 w-full">
+    </div>
+    <div>
+      <label for="contact-email" class="type-label block text-gray-600">Email <span aria-hidden="true">*</span></label>
+      <input id="contact-email" type="email" name="contact[email]" autocomplete="email" value="{{ form.email | default: customer.email }}" required class="field mt-2 w-full">
+    </div>
+    <div>
+      <label for="contact-subject" class="type-label block text-gray-600">Subject</label>
+      <div class="select-wrap mt-2">
+        <select id="contact-subject" name="contact[subject]" class="field w-full">
+          {%- assign subjects = section.settings.subjects | split: '|' -%}
+          {%- for subject in subjects -%}<option value="{{ subject | strip | escape }}">{{ subject | strip }}</option>{%- endfor -%}
+        </select>
+        <svg class="select-wrap__icon size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div>
+      <label for="contact-order" class="type-label block text-gray-600">Order number (optional)</label>
+      <input id="contact-order" type="text" name="contact[order_number]" value="{{ form.order_number }}" placeholder="#1001" class="field mt-2 w-full">
+    </div>
+    <div class="sm:col-span-2">
+      <label for="contact-body" class="type-label block text-gray-600">Message <span aria-hidden="true">*</span></label>
+      <textarea id="contact-body" name="contact[body]" rows="5" required class="field mt-2 w-full resize-y py-3">{{ form.body }}</textarea>
+    </div>
+    <div class="sm:col-span-2">
+      <button type="submit" class="btn-primary w-full sm:w-auto sm:min-w-[14rem]">Send message</button>
+    </div>
+  {%- endform -%}
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact Us" },
+    { "type": "text", "id": "text", "label": "Text before the email", "default": "Contact us by reaching our email at" },
+    { "type": "text", "id": "text_after", "label": "Text after the email", "default": "or send us a message below. We reply within 24 hours." },
+    { "type": "text", "id": "email", "label": "Email (optional)", "info": "Defaults to the support email in Theme settings." },
+    { "type": "text", "id": "subjects", "label": "Subject options (separate with |)", "default": "Order question | Shipping & delivery | Returns & refunds | Product question | Other" }
+  ],
+  "presets": [{ "name": "Contact form" }]
+}
+{% endschema %}

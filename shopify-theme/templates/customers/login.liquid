@@ -1,17 +1,1 @@
-<section class="mx-auto max-w-[28rem] px-4 py-16 sm:px-6">
-  <h1 class="type-display text-[clamp(2rem,7vw,3rem)]">Log in</h1>
-  {%- form 'customer_login', class: 'mt-8 space-y-4' -%}
-    {%- if form.errors -%}<div class="text-sm text-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
-    <div><label for="login-email" class="type-label block text-gray-600">Email</label><input id="login-email" type="email" name="customer[email]" autocomplete="email" required class="field mt-2 w-full"></div>
-    <div><label for="login-password" class="type-label block text-gray-600">Password</label><input id="login-password" type="password" name="customer[password]" autocomplete="current-password" required class="field mt-2 w-full"></div>
-    <button type="submit" class="btn-primary w-full">Log in</button>
-    <p class="text-sm text-gray-600"><a class="link" href="{{ routes.account_register_url }}">Create an account</a></p>
-  {%- endform -%}
-  <h2 class="mt-12 font-display text-lg font-bold uppercase [font-stretch:112%]">Forgot your password?</h2>
-  {%- form 'recover_customer_password', class: 'mt-4 space-y-4' -%}
-    {%- if form.posted_successfully? -%}<p class="text-sm" role="status">We've sent you an email with a link to reset your password.</p>{%- endif -%}
-    {%- if form.errors -%}<div class="text-sm text-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
-    <div><label for="recover-email" class="type-label block text-gray-600">Email</label><input id="recover-email" type="email" name="email" autocomplete="email" required class="field mt-2 w-full"></div>
-    <button type="submit" class="btn-secondary w-full">Send reset link</button>
-  {%- endform -%}
-</section>
+{%- render 'account-forms' -%}
