@@ -203,9 +203,18 @@
           </p>
         {%- endif -%}
         {%- if shop.enabled_payment_types.size > 0 -%}
+          {%- comment -%} Most popular first: cards, then wallets, then anything else that is enabled {%- endcomment -%}
+          {%- assign payment_order = 'visa,master,american_express,discover,paypal,apple_pay,google_pay,shopify_pay,venmo,amazon,klarna,afterpay,affirm,diners_club,jcb,unionpay,maestro' | split: ',' -%}
           <ul class="payment-icons flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
+            {%- for type in payment_order -%}
+              {%- if shop.enabled_payment_types contains type -%}
+                <li>{{ type | payment_type_svg_tag: class: 'h-6 w-auto' }}</li>
+              {%- endif -%}
+            {%- endfor -%}
             {%- for type in shop.enabled_payment_types -%}
-              <li>{{ type | payment_type_svg_tag: class: 'h-6 w-auto' }}</li>
+              {%- unless payment_order contains type -%}
+                <li>{{ type | payment_type_svg_tag: class: 'h-6 w-auto' }}</li>
+              {%- endunless -%}
             {%- endfor -%}
           </ul>
         {%- endif -%}
