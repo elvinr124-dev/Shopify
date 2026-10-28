@@ -767,6 +767,10 @@ section[id], #main { scroll-margin-top: var(--header-h); }
   .rte table { width: 100%; border-collapse: collapse; }
   .rte td, .rte th { border: 1px solid var(--ta-200); padding: 0.5rem; text-align: left; }
 
+  /* Low-stock alert in the buy box (light red box) */
+  .stock-alert { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 0.875rem; border: 1px solid #FECACA; background: #FEF2F2; color: #B91C1C; font-size: 0.9375rem; font-weight: 600; line-height: 1.35; }
+  .stock-alert[hidden] { display: none; }
+
   /* Shopify express checkout buttons: match the square, full-width CTA style */
   .shopify-payment-button__button { border-radius: 0 !important; min-height: 3.5rem; }
   .shopify-payment-button__more-options { color: var(--ta-600); text-decoration: underline; }
