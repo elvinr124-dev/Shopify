@@ -490,9 +490,9 @@
         }
       }
       renderTotal();
-      // Low-stock alert follows the selected variant (ids are rendered by Liquid from real inventory)
+      // Stock alert: in "low" mode it follows the selected variant (ids rendered by Liquid from real inventory)
       const lowStock = $('[data-low-stock]', section);
-      if (lowStock) lowStock.hidden = !(variant && (lowStock.dataset.lowStockIds || '').split(',').includes(String(variant.id)));
+      if (lowStock && lowStock.dataset.lowStockMode === 'low') lowStock.hidden = !(variant && (lowStock.dataset.lowStockIds || '').split(',').includes(String(variant.id)));
       if (variant && variant.featured_media) {
         const t = thumbs.find((th) => th.dataset.mediaId === String(variant.featured_media.id));
         if (t) showMedia(t);

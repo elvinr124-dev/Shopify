@@ -54,6 +54,29 @@
           <p class="type-label text-gray-700">{{ section.settings.price_note }}</p>
         {%- endif -%}
       </div>
+      {%- comment -%}
+        Stock alert under the price. Mode "always" shows it on every variant; mode "low" shows it only
+        while the selected variant's tracked inventory is at or below the threshold (theme.js follows
+        variant changes).
+      {%- endcomment -%}
+      {%- if section.settings.low_stock_text != blank -%}
+        {%- liquid
+          assign low_stock_ids = ''
+          for v in p.variants
+            if v.inventory_management == 'shopify' and v.inventory_quantity > 0 and v.inventory_quantity <= section.settings.low_stock_threshold
+              assign low_stock_ids = low_stock_ids | append: v.id | append: ','
+            endif
+          endfor
+          assign current_id_key = current_variant.id | append: ','
+          assign stock_alert_hidden = false
+          if section.settings.low_stock_mode == 'low'
+            unless low_stock_ids contains current_id_key
+              assign stock_alert_hidden = true
+            endunless
+          endif
+        -%}
+        <p class="stock-alert mt-3" role="status" data-low-stock data-low-stock-mode="{{ section.settings.low_stock_mode }}" data-low-stock-ids="{{ low_stock_ids }}"{% if stock_alert_hidden %} hidden{% endif %}>{{ section.settings.low_stock_text }}</p>
+      {%- endif -%}
     </div>
 
     {%- comment -%} Gallery {%- endcomment -%}
@@ -184,23 +207,6 @@
           </p>
         </div>
 
-        {%- comment -%}
-          Low-stock alert: only shown while the selected variant's tracked inventory is at or below
-          the threshold set in the theme editor (theme.js toggles it when the variant changes).
-        {%- endcomment -%}
-        {%- if section.settings.low_stock_text != blank -%}
-          {%- liquid
-            assign low_stock_ids = ''
-            for v in p.variants
-              if v.inventory_management == 'shopify' and v.inventory_quantity > 0 and v.inventory_quantity <= section.settings.low_stock_threshold
-                assign low_stock_ids = low_stock_ids | append: v.id | append: ','
-              endif
-            endfor
-            assign current_id_key = current_variant.id | append: ','
-          -%}
-          <p class="stock-alert" role="status" data-low-stock data-low-stock-ids="{{ low_stock_ids }}"{% unless low_stock_ids contains current_id_key %} hidden{% endunless %}>{{ section.settings.low_stock_text }}</p>
-        {%- endif -%}
-
         {%- comment -%} CTAs {%- endcomment -%}
         <div class="space-y-3">
           <button type="submit" class="btn-primary w-full" data-buy-now data-label="{{ section.settings.buy_now_label | escape }}"{% unless current_variant.available %} disabled{% endunless %}>
@@ -312,8 +318,12 @@
     { "type": "checkbox", "id": "show_countdown", "label": "Show free-shipping countdown to midnight", "default": true },
     { "type": "text", "id": "countdown_suffix", "label": "Countdown text", "default": "for free shipping today" },
     { "type": "text", "id": "countdown_fallback", "label": "Text before the countdown loads", "default": "Order today for free shipping." },
-    { "type": "text", "id": "low_stock_text", "label": "Low-stock message", "default": "🔥 Selling fast! Only a few left for the season", "info": "Shown above the Buy Now button only while the selected variant's stock (Track quantity on) is at or below the number below. Leave empty to turn it off." },
-    { "type": "range", "id": "low_stock_threshold", "label": "Show low-stock message at or below", "min": 1, "max": 100, "step": 1, "unit": "pcs", "default": 10 },
+    { "type": "text", "id": "low_stock_text", "label": "Stock message", "default": "🔥 Selling fast! Only a few left for the season", "info": "Shown under the price. Leave empty to turn it off." },
+    { "type": "select", "id": "low_stock_mode", "label": "Show stock message", "default": "always", "options": [
+      { "value": "always", "label": "Always" },
+      { "value": "low", "label": "Only when stock is low" }
+    ] },
+    { "type": "range", "id": "low_stock_threshold", "label": "Low stock means at or below", "min": 1, "max": 100, "step": 1, "unit": "pcs", "default": 10, "info": "Used when 'Only when stock is low' is selected (needs Track quantity on)." },
     { "type": "text", "id": "guarantee", "label": "Guarantee line", "default": "30-day zero-risk returns. Love it or get your money back." },
     { "type": "richtext", "id": "shipping_text", "label": "Shipping & returns", "default": "<p>Free shipping on orders placed today. Every order ships within 24 hours with tracking sent to your inbox.</p><p>30-day zero-risk returns: if it isn't right, contact support within 30 days of delivery for a full refund.</p>" },
     { "type": "richtext", "id": "care_text", "label": "Care", "default": "<p>Machine wash cold, inside out, on a gentle cycle. Tumble dry low or hang dry. Do not bleach or iron.</p>" },
