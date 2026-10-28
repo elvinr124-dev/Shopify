@@ -44,7 +44,9 @@
           <span class="sr-only">Regular price: </span><s class="text-lg text-gray-600" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
           <span class="type-label bg-black px-2 py-1 text-white" data-save>
             {%- if current_variant.compare_at_price > current_variant.price -%}
-              Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%
+              {%- comment -%} Savings in dollars, rounded to the nearest whole dollar ($9.98 -> $10) {%- endcomment -%}
+              {%- assign saved_whole = current_variant.compare_at_price | minus: current_variant.price | plus: 50 | divided_by: 100 | times: 100 -%}
+              Save {{ saved_whole | money_without_trailing_zeros }}
             {%- endif -%}
           </span>
         </p>

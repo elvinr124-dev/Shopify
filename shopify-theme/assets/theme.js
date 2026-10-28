@@ -43,6 +43,14 @@
     return String(format).replace(placeholder, value).replace(/<[^>]*>/g, '');
   }
 
+  // The store's money format without decimals, e.g. "${{amount}}" -> "${{amount_no_decimals}}"
+  function wholeMoneyFormat() {
+    return String(THEME.moneyFormat || '${{amount}}')
+      .replace(/\{\{\s*amount\s*\}\}/, '{{amount_no_decimals}}')
+      .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/, '{{amount_no_decimals_with_comma_separator}}')
+      .replace(/\{\{\s*amount_with_space_separator\s*\}\}/, '{{amount_no_decimals_with_space_separator}}');
+  }
+
   async function fetchJSON(url, options = {}) {
     const res = await fetch(url, {
       credentials: 'same-origin',
@@ -449,7 +457,9 @@
         compare.hidden = !show;
         if (show) {
           setText('[data-compare-price]', formatMoney(variant.compare_at_price), section);
-          setText('[data-save]', `Save ${Math.round((1 - variant.price / variant.compare_at_price) * 100)}%`, section);
+          // Savings in dollars, rounded to the nearest whole dollar ($9.98 -> $10)
+          const savedWhole = Math.round((variant.compare_at_price - variant.price) / 100) * 100;
+          setText('[data-save]', `Save ${formatMoney(savedWhole, wholeMoneyFormat())}`, section);
         }
       }
       for (const g of optionGroups) {
