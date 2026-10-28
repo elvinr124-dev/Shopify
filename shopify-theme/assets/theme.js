@@ -445,6 +445,13 @@
     function renderTotal() {
       const total = formatMoney(variant ? variant.price * qty() : 0);
       setText('[data-buy-total]', total, section);
+      // Crossed-out original total next to it while the variant is on sale
+      const compareTotal = $('[data-buy-total-compare]', section);
+      if (compareTotal) {
+        const onSale = Boolean(variant && variant.compare_at_price > variant.price);
+        compareTotal.hidden = !onSale;
+        if (onSale) setText('[data-buy-total-compare-price]', formatMoney(variant.compare_at_price * qty()), section);
+      }
     }
 
     function renderVariant() {

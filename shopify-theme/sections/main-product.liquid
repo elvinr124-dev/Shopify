@@ -177,7 +177,10 @@
           </div>
           <p class="text-right" aria-live="polite" aria-atomic="true">
             <span class="type-label block text-gray-600">Total</span>
-            <span class="mt-1 block font-display text-2xl font-extrabold leading-none [font-stretch:112%]" data-buy-total>{{ current_variant.price | money }}</span>
+            <span class="mt-1 block font-display text-2xl font-extrabold leading-none [font-stretch:112%]">
+              {%- comment -%} Crossed-out original total (compare-at price x quantity) when the variant is on sale {%- endcomment -%}
+              <span data-buy-total-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}><span class="sr-only">Regular price: </span><s class="font-sans text-lg font-normal text-gray-600" data-buy-total-compare-price>{{ current_variant.compare_at_price | money }}</s> </span><span data-buy-total>{{ current_variant.price | money }}</span>
+            </span>
           </p>
         </div>
 
